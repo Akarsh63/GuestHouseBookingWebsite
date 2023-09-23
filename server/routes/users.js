@@ -81,7 +81,7 @@ router.post('/resendotp',async(req,res)=>{
     if(user){
         const final=await otpmodel.findByIdAndDelete(user._id);
     }
-    const otp=otpGenerator.generate(6,{
+    const otp=otpGenerator.generate(5,{
         digits:true,lowerCaseAlphabets:false,upperCaseAlphabets:false,specialChars:false
     })
     const hashedotp=await bcrypt.hash(otp,10);
@@ -100,7 +100,7 @@ router.post('/resendotp',async(req,res)=>{
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
         res.render('otp');
     });
-    return res.status(200).json({message:'Resent OTP'})
+    return res.status(200).json({message:'Resent OTP'});
 })
 router.post('/verifyotp',async(req,res)=>{
     const {username,password,email,otp}=req.body;

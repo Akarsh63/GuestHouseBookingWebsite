@@ -19,14 +19,16 @@ import Newbook from './Pages/AdminBooking';
 import Facultyinterface from './Pages/Facultyinterface';
 import Facultyform from './components/Facultyform';
 import Facultybookings from './components/Facultybookings';
+import Iitjguesthouseloginregister from './Pages/Iitjguesthouseloginregister';
+import Studentlogin from './Pages/Studentlogin';
 function App() {
   return (
     <Router>
       <Scrolltop />
        <Routes>
-          <Route path='/' element={<Loginpage />} />
-          <Route path='/Register' element={<Registrationpage />} />
-          <Route path='/adminlogin' element={<AdminLoginpage />} />
+          <Route path='/' element={<Iitjguesthouseloginregister />}/>
+          <Route path='/student-login' element={<Studentlogin />} />
+          <Route path='/admin-login' element={<AdminLoginpage />} />
           <Route path="/dashboard/admins" element={<Adminwebsite />}>
               <Route path="/dashboard/admins" element ={<AdminallBookings />}/>
               <Route path="/dashboard/admins/details" element ={<Detail />}/>

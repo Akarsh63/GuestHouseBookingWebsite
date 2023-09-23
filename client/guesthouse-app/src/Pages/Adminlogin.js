@@ -3,9 +3,8 @@ import {useNavigate,Link } from 'react-router-dom';
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import './registration.css'
-import admin from '../images/admin.png';
 import { FaUser,FaLock } from "react-icons/fa";
-// import Userid from '../UserId/Userid';
+import { Box, TextField } from '@mui/material';
 
 
 export default function AdminLoginpage() {
@@ -40,38 +39,38 @@ export default function AdminLoginpage() {
 
 
   return (
-    <div className='main'>
-       <section class="sign-in">
-       <div className='logintype'>
-              <div className='logintypes'><Link to="/">User Login</Link></div>
-              <div className='logintypes'><Link to="/adminlogin">Admin Login</Link></div>
-            </div>
+    <Box
+    sx={{
+      background:`linear-gradient(0deg,rgba(7,15,41,.8549019607843137),rgba(25,34,61,.623) 20%,rgba(84,103,161,.39),hsla(0,0%,100%,0)),url('https://www.hindustantimes.com/ht-img/img/2023/06/09/1600x900/iit_jodhpur_1686300921343_1686300927090.jpg') `,
+      // backgroundImage: `url('https://www.hindustantimes.com/ht-img/img/2023/06/09/1600x900/iit_jodhpur_1686300921343_1686300927090.jpg')`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundAttachment: 'fixed',
+      padding: '3%',
+      display:'flex',
+      justifyContent: 'center',
+      height:'100vh',
+      opacity:'1',
+      alignItems:'center'
+    }}
+  >
             <div class="container">
-                <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img src={admin} alt="sing up image" /></figure>
-                    </div>
-
                     <div className="signin-form">
-                        <h2 className="form-title">Welocme, Admin</h2>
+                        <h2 className="form-title">IIT JODHPUR ADMIN LOGIN</h2>
                         <form  className="register-form" onSubmit={onsubmit} id="login-form">
                             <div class="form-group">
-                                <label className='lbl' for="your_name"><FaUser className="material-icons-name"/></label>
-                                <input className='input_res' value={logininfo.username} onChange={adminhandlechange} type='text' placeholder='Username' name='username' id='your_name' required/>
+                                <TextField sx={{width:'100%',}} id="outlined-basic" label="Username" variant="outlined" value={logininfo.username} onChange={adminhandlechange} autoComplete='off' required placeholder='Username' name='username' className="input_res"/>
                             </div>
                             <div class="form-group">
-                                <label className='lbl' for="your_pass"><FaLock/></label>
-                                <input className='input_res'value={logininfo.password} onChange={adminhandlechange} type='password' placeholder='Password' name='password' id='your_pass' required/>
+                            <TextField sx={{width:'100%'}} id="outlined-basic" label="Password" variant="outlined" value={logininfo.password} onChange={adminhandlechange} type='password' placeholder='Password' name='password' className="input_res" autoComplete='off' required/>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin"  className="form-submit" value="Log in"/>
+                                <input type="submit" name="signin" className="form-submit" value="Log in"/>
                             </div>
                         </form>
                     </div>
-                </div>
             </div>
-        </section>
-    
-    </div>
+    </Box>
   )
 }

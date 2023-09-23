@@ -1,0 +1,11 @@
+.animatedtext{
+    animation: texthead 3s ;
+    animation-fill-mode: forwards;
+}
+.ss-q4sqf-MuiFormControl-root{
+    margin: 0;
+}
+@keyframes texthead {
+    from {opacity: 0;transform: translateY(30px)}
+    to {opacity: 1;transform: translateY(0px)}
+}

@@ -11,7 +11,7 @@ const Dashboard = () => {
   const adminlogout = async(e)=>{
     e.preventDefault();
     removeCookie('admin_access_token');
-    navigate('/adminlogin')
+    navigate('/')
   }
   return (
     <div>

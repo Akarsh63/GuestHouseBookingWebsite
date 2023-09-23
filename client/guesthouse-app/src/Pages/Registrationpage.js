@@ -7,9 +7,8 @@ import signUpImage from '../images/singUp-image.jpg';
 import { FaUser,FaLock } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
 import { MuiOtpInput } from 'mui-one-time-password-input'
-import { Typography } from 'antd';
-import {  Button, Grid } from '@mui/material';
-export default function Registrationpage() {
+import {  Button, Grid, TextField, Typography } from '@mui/material';
+export default function Registrationpage({setStudentlogin}) {
   const [page,setpage]=useState(0);
   const [otp, setOtp] =useState('');
   const [resendDisabled, setResendDisabled] = useState(true);
@@ -107,35 +106,31 @@ export default function Registrationpage() {
   const reggetform=()=>{
     if(page===0){
       return <div>
-<form class="register-form" id="register-form" onSubmit={onsubmit}>
+                <form class="register-form" id="register-form" onSubmit={onsubmit}>
                             <div class="form-group">
-                                <label for="username" className='lbl'><FaUser class="material-icons-name"/></label>
-                                <input value={Registrationinfo.username} onChange={handlechange} type='text' placeholder='Username' name='username' id='username' class="input_res" required/>
+                                <TextField sx={{width:'100%'}} id="outlined-basic" label="Username" variant="outlined" value={Registrationinfo.username} onChange={handlechange} type='text' placeholder='Username' name='username' className="input_res" autoComplete='off' required/> 
                             </div>
                             <div class="form-group">
-                                <label for="email" className='lbl'><MdMail class="zmdi zmdi-email"/></label>
-                                <input  value={Registrationinfo.email} onChange={handlechange} type='text' placeholder='IITJ Email ID' name='email' id='email' class="input_res" required/>
+                                <TextField sx={{width:'100%'}} id="outlined-basic" label="IITJ Email Id" variant="outlined" value={Registrationinfo.email} onChange={handlechange} type='text' placeholder='IITJ Email ID' name='email' className="input_res" autoComplete='off' required/> 
                             </div>
                             <div class="form-group">
-                                <label for="pass" className='lbl'><FaLock class="material-icons-name"/></label>
-                                <input value={Registrationinfo.password} onChange={handlechange} type='password' placeholder='Password' name='password' id='pass' class="input_res" required/>
+                                <TextField sx={{width:'100%'}} id="outlined-basic" label="Password" variant="outlined" value={Registrationinfo.password} onChange={handlechange} type='password' placeholder='Password' name='password' className="input_res" autoComplete='off' required/> 
                             </div>
                             <div class="form-group">
-                                <label for="cpass" className='lbl'><FaLock class="material-icons-name"/></label>
-                                <input value={Registrationinfo.confirmpassword} onChange={handlechange} type='password' placeholder='Confirm Password' name='confirmpassword' id='cpass' class="input_res" required/>
+                                <TextField sx={{width:'100%'}} id="outlined-basic" label="Confirm Password" variant="outlined" value={Registrationinfo.confirmpassword} onChange={handlechange} type='password' placeholder='Confirm Password' name='confirmpassword' className="input_res" autoComplete='off' required/> 
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit reg" value="Register"/>
+                                <input type="submit" name="signup" id="signup" class="form-submit reg" value="Create Account"/>
                             </div>
                         </form>
-      </div>
+               </div>
     }
     else{
       return       <div><Typography variant="body1" style={{ marginBottom: '10px' }}>
-      Enter OTP sent to <span style={{ fontWeight: 'bold',color:'#F31559' }}>{Registrationinfo.email}</span>
+      Enter OTP sent to <span style={{ fontWeight: 'bold',color:'#1c58d9' }}>{Registrationinfo.email}</span>
     </Typography>
     <MuiOtpInput
-      length={6}
+      length={5}
       value={otp}
       onChange={handleotpChange}
       autoFocus
@@ -147,8 +142,8 @@ export default function Registrationpage() {
       
     />
     <div style={{width:'100%',textAlign:'center',marginTop:'25px'}}>
-    <Button variant="contained" sx={{ backgroundColor: '#F31559','&:hover': {
-            backgroundColor: 'rgba(243, 21, 89, 0.9)',
+    <Button variant="contained" sx={{ backgroundColor: '#1c58d9','&:hover': {
+            backgroundColor: '#386fe5',
           }, }} onClick={handleComplete}>Validate</Button>
     </div>
     <div style={{width:'80%',textAlign:'center',marginTop:'5px',marginLeft:'auto',marginRight:'auto'}}>
@@ -158,18 +153,18 @@ export default function Registrationpage() {
     </div>
     <Grid container sx={{display:'flex',flexDirection:'row',justifyContent:'space-between',marginTop:'25px'}}>
       <Grid item>
-        <Button variant="outlined" sx={{color:'#F31559',borderColor:'#F31559','&:hover': {
-            borderColor: 'rgba(243, 21, 89, 0.9)',
+        <Button variant="outlined" sx={{color:'#1c58d9',borderColor:'#1c58d9','&:hover': {
+            borderColor: '#386fe5',
           }} } onClick={backControl}>Go Back</Button>
       </Grid>
       <Grid item>
       <Button
   disabled={resendDisabled}
   sx={{
-    color: '#F31559',
-    border: '1px solid #F31559', 
+    color: '#1c58d9',
+    border: '1px solid #1c58d9', 
     '&:hover': {
-      borderColor: 'rgba(243, 21, 89, 0.9)',
+      borderColor: '#386fe5',
     },
   }}
   onClick={resendControl}
@@ -185,21 +180,14 @@ export default function Registrationpage() {
     }
   }
   return (
-    <div className='main'>
-      <section class="signup">
-            <div class="container">
-                <div class="signup-content">
+            <div class="container otpform">
                     <div class="signup-form">
-                        <h2 class="form-title">Register</h2>
+                        <h2 class="form-title reg-title">IIT JODHPUR STUDENT REGISTRATION</h2>
                       {reggetform()}
+                       <Typography sx={{textAlign:'center',color:'grey !important'}}>
+                        Already have an Account?<Link to='#' className="signin-link" onClick={()=>{setStudentlogin(0)}}>Login</Link>
+                        </Typography>
                     </div>
-                    <div class="signup-image">
-                        <figure><img src={signUpImage} alt="sing up image" /></figure>
-                        <Link to='/' class="signup-image-link">I am already a member</Link>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+            </div> 
   )
 }
