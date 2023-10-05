@@ -1,9 +1,6 @@
 .dashboard{
-    height: 100%;
+    height: calc(100vh - 68px);
     width: 200px;
-    position: fixed;
-    z-index: 1; top: 0;
-    left: 0;
     background-color:#4C5A65; 
     overflow-x: hidden;
     padding-top: 20px; 
@@ -11,6 +8,9 @@
     flex-direction: column;
     align-items: center;
     gap:20px
+}
+::-webkit-scrollbar {
+    width: 0;
 }
 .dashboard a{
     padding: 6px 8px 6px 16px;
