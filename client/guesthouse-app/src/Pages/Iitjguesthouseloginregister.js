@@ -16,13 +16,16 @@ export default function Iitjguesthouseloginregister() {
   };
   const handlelogin=(e)=>{
     if(loginType===""){
-alert('fill all')
+ alert('fill all')
     }
     else if(loginType===1){
       navigate('/admin-login')
     }
     else if (loginType===3){
       navigate('/student-login')
+    }
+    else if(loginType===2){
+      navigate('/faculty-login')
     }
     
   }

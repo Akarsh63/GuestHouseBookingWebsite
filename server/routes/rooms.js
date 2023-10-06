@@ -22,20 +22,22 @@ router.post('/enter',middleware,async (req,res)=>{
     }
 })
 
-router.get('/allrooms',middleware,async (req,res)=>{
+router.get('/allrooms',async (req,res)=>{
     try {
-      let exist=await usersmodel.findById(req.userid);
-      if(!exist){
-        return res.status(400).send('User not found')
-      }
+      // let exist=await usersmodel.findById(req.userid);
+      // if(!exist){
+      //   return res.status(400).send('User not found')
+      // }
         const deluxerooms = await roommodel.find({ "options": "Deluxe" });
         const singlerooms = await roommodel.find({ "options": "Single" });
         const doublerooms = await roommodel.find({ "options": "Double" });
+        const allrooms=await roommodel.find({});
 
         return res.status(200).json({
           'alldeluxerooms': deluxerooms,
           'allsinglerooms': singlerooms,
-          'alldoublerooms': doublerooms
+          'alldoublerooms': doublerooms,
+          "allrooms":allrooms
         });
       } catch (error) {
         console.log(error);
@@ -44,17 +46,18 @@ router.get('/allrooms',middleware,async (req,res)=>{
 
 })
 
-router.get('/allfreerooms',middleware,async (req,res)=>{
+router.get('/allfreerooms',async (req,res)=>{
   try {
     let exist=await adminmodel.findById(req.userid);
       if(!exist){
         return res.status(400).send('Admin not found')
       }
     const Rooms = await roommodel.find({});
-
+    console.log(Rooms)
       return res.status(200).json({
         'Rooms':Rooms
       });
+      
     } catch (error) {
       return res.status(500).json({ error: 'Internal Server Error' });
     }

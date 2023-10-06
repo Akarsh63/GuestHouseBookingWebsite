@@ -81,10 +81,10 @@ export default function Checkavaibility() {
           setinp(false);
         }
       };
-    
+
       handleResize();
       window.addEventListener('resize', handleResize);
-    
+      
       return () => {
         window.removeEventListener('resize', handleResize);
       };

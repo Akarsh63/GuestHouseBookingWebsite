@@ -73,7 +73,7 @@ export default function Facultybookings() {
                               backgroundColor: '#1976d2', // Set the same color on hover to avoid the change
                               },
                           }}
-                            >
+                           >
                             
                             View Booking
 

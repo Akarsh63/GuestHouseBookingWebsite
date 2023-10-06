@@ -48,7 +48,7 @@ const Newbook = () => {
               const bookedOut = new Date(booking.enddate.split('-').reverse().join('-'));
               const checkIn = new Date(startdate);
               const checkOut = new Date(enddate);
-      
+              console.log(room.roomnumber);
               if (booking.rooms.includes(room.roomnumber)) {
                 console.log(room.roomnumber);
                 console.log(bookedIn)
@@ -93,6 +93,7 @@ const Newbook = () => {
       fetchAvailableRooms();
     }
   }, [startdate, enddate]);
+  
   
   const onRoomChange = (e) => {
     const roomId = e.target.value;
