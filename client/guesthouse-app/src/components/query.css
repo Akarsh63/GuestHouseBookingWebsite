@@ -1,0 +1,100 @@
+.query-form-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    padding-top: 80px;
+  }
+  .query-form{
+    width: 50%;
+  }
+  .query-input-container{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+  }
+  .query-input input{
+    width: 100%;
+     padding: 12px;
+     border: none;
+     border-bottom: 1px solid #1e1e1e;
+     transition:border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+     outline: none;
+  }
+  .query-input textarea{
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #1e1e1e;
+    outline: none;
+    transition:border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  }
+  .query-btn input{
+    color: #fff;
+    background-color: #f77a42;
+    outline: none;
+    padding: 12px 25px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .query-btn input:hover{
+    background-color: #f66524;
+  }
+  .map-container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mapouter {
+    text-align:right;
+    height:80%;
+    width:80%;
+  }
+
+  .gmap_canvas {overflow:hidden;background:none!important;height:100%;width:100%;}
+  iframe{
+    border-right:1px solid #999;
+    border-bottom:1px solid #999;
+  }
+  @media screen and (max-width:1286px){
+    .query-form-container{
+        width: 90%;
+    }
+    }
+    @media only screen and (max-width:900px){
+      .query-form-container {
+        margin-bottom:35px;
+      }
+    }
+    @media screen and (max-width:986px){
+      .query-form-container{
+          width: 86%;
+          flex-direction: column;
+      }
+      .query-form{
+        width: 100%;
+      }
+      .map-container{
+        width: 100%;
+      }
+      .gmap_canvas{
+        height: 300px;
+      }
+      }
+      @media screen and (max-width:586px){
+        .query-input-container{
+          gap:25px;
+        }
+        .query-form-container{
+          width: 90%;
+      }
+      .query-input-container{
+        margin-top: 16px;
+      }
+        }

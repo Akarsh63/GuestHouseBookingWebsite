@@ -97,7 +97,7 @@ const Table = ({ booking,setrefresh}) => {
   return (
     <div className='maintable' >
       <div className='table'>
-        <MUIDataTable className="tab"
+        <MUIDataTable stickyHeader className="tab"
           title={"All Bookings"}
           data={data}
           columns={columns}

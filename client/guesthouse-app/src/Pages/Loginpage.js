@@ -4,11 +4,11 @@ import {Link} from 'react-router-dom';
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import './registration.css'
-import signInImage from '../images/singIn-image.jpg';
-import { FaUser,FaLock } from "react-icons/fa";
-// import Userid from '../UserId/Userid';
+import TextField from '@mui/material/TextField';
+import { Typography } from '@mui/material';
+import {motion} from 'framer-motion'
 
-export default function Loginpage() {
+export default function Loginpage({setStudentlogin}) {
   const [_, setCookies] = useCookies(["access_token"]);
    const [logininfo,setLogninfo]=useState({
      username:'',
@@ -34,40 +34,32 @@ export default function Loginpage() {
     }
   }
   return (
-    <div className='main'>
-       <section className="sign-in">
-            <div className='logintype'>
-              <div className='logintypes'><Link to="/">User Login</Link></div>
-              <div className='logintypes'><Link to='/adminlogin'>Admin Login</Link></div>
-            </div>
-            <div className="container">
-              
-                <div className="signin-content">
-                    <div className="signin-image">
-                        <figure><img src={signInImage} alt="sing up image" /></figure>
-                        <Link to='/register' className="signup-image-link">Create an account</Link>
-                    </div>
-
+            <motion.div className="container"
+              initial={{scale: 0}}
+              animate={{scale: 1}}
+              transition={{duration: 0.5}}
+            >
                     <div className="signin-form">
-                        <h2 className="form-title">Login</h2>
-                        <form onSubmit={onsubmit} className="register-form" id="login-form">
+                        <h2 className="form-title">IIT JODHPUR STUDENT LOGIN</h2>
+                        <form onSubmit={onsubmit} className="login-form">
                             <div className="form-group">
-                                <label for="your_name" className='lbl'><FaUser className="material-icons-name"/></label>
-                                <input value={logininfo.username} onChange={handlechange} type='text' placeholder='Username' name='username' id='your_name' className="input_res" autoComplete='off' required/>
+                                <TextField sx={{width:'100%',}} id="outlined-basic" label="Username Or EmailID" variant="outlined" value={logininfo.username} onChange={handlechange} autoComplete='off' required placeholder='Username' name='username' className="input_res"/>
                             </div>
                             <div className="form-group">
-                                <label for="your_pass" className='lbl'><FaLock/></label>
-                                <input value={logininfo.password} onChange={handlechange} type='password' placeholder='Password' name='password' id='your_pass' className="input_res" autoComplete='off' required/>
+                                 <TextField sx={{width:'100%'}} id="outlined-basic" label="Password" variant="outlined" value={logininfo.password} onChange={handlechange} type='password' placeholder='Password' name='password' className="input_res" autoComplete='off' required/>
+                            </div>
+                            <div>
+                              <Link className='forgotpassword'>Forgot your password?</Link>
                             </div>
                             <div className="form-group form-button">
                                 <input type="submit" name="signin" id="signin" className="form-submit" value="Log in"/>
                             </div>
                         </form>
+                        <Typography sx={{textAlign:'center',color:'grey'}}>
+                        Don't have an Account?<Link to='#' className="signup-link" onClick={()=>{setStudentlogin(1)}}>Create an account</Link>
+                        </Typography>
                     </div>
-                </div>
-            </div>
-        </section>
+            </motion.div>
 
-    </div>
   )
 }

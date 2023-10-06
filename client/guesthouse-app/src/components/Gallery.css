@@ -1,0 +1,11 @@
+.gallery {
+    text-transform: uppercase;
+    font-weight: 300;
+    color: #232323;
+}
+.carousel-root {
+    height: 300px;
+}
+.carousel-slider {
+    height: 100%;
+}

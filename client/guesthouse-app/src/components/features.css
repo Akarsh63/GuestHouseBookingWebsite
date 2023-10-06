@@ -1,101 +1,132 @@
-.main_about{
-    padding: 50px 40px 30px 40px;
-    background-color: #fff;
-   
+.Container-features {
+    /* height: 100vh; */
+    padding-top: 90px;
 }
 .about{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-     box-sizing: border-box;
-     box-shadow: 0px 2px 11.83px 0.17px #000000b3;
-     border-radius: 11px;
+   display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    width: 80%;
+    margin: 0px auto;
+    gap: 37px;
+    /* height: 60vh; */
 }
-.about_img{
-    
-    padding:80px
+.features{
+    width: 80%;
+    margin: 65px auto 0px auto;
+    /* height: 40vh; */
 }
-.about_img img{
-    /* box-shadow: 0px 2px 11.83px 0.17px rgba(0, 0,0,.7); */
-    width: 100%;
+.facilities{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.facilities ul{
+    display: flex;
+    flex-direction: column;
+    gap:10px
+}
+.facilities li{
+    color: #232323;
+    line-height: 1.2em;
+    font-size: 14px;
+     letter-spacing: 0.02em;
 }
 .about_desc{
-    padding: 80px;
-    color: #808080;
+    /* flex: 1; */
+    width: 600px;
 }
-.about_desc div{
-    color:#1e1e1e;
-    font-weight: 635;
-    font-size: 30px;
-    margin-bottom: 20px;
+.about_img{
+    flex: 1;
+    width: 600px;
+    margin: auto;
+
 }
-.about_desc ul{
-    padding-left: 0;
+.about_img img{
+    width: 100%;
+    height: auto;
+
 }
-.about_desc li{
-   list-style: none;
-   font-size: 18px;
-   padding:9px 0;
-   transition: .25s color;
+.aboutushead{
+    /* margin-top: 15px; */
+  color: #232323;
+  font-size: 36px;
+  font-weight: 200;
+  text-transform: uppercase;
+  line-height: 1;
+  position: relative;
 }
-/* .about_desc li:hover{
-    color: #1e1e1e;
-} */
-@media only screen and (max-width:1200px){
+.textabout{
+    color: #232323;
+    line-height: 1.5em;
+    margin-bottom: 0;
+    margin-top: 25px;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Hind'; */
+}
+@media screen and (max-width:1286px){
     .about_img{
-        padding:80px 60px
-    }
-}
-@media only screen and (max-width:992px){
-    .about_img{
-        padding:70px 45px
-    }
-    .about_desc{
-        padding: 70px 60px;
-    }
-}
-@media only screen and (max-width:768px){
-    .about_img{
-        padding:60px 25px
-    }
-    .about_desc{
-        padding: 60px 40px;
-    }
-}
-@media only screen and (max-width:586px){
-    .main_about{
-        padding: 50px 30px 30px 30px;
-       
+        flex: none;
+        width: 500px;
     }
     .about{
-        grid-template-columns: repeat(1,1fr);
-         box-shadow: 0px 0px 6.5px 0px #000000b3;
+        width: 90%;
+        gap: 30px;
     }
-    .about_img{
-        padding:40px 25px 20px 25px
+    .features{
+        width: 90%;
     }
-    .about_desc{
-        padding: 20px 40px ;
     }
-    .about_desc div{
-        font-size: 26px;
-    }
-    .about_desc li{
-        font-size: 17px;
-        line-height: 1;
-    }
-}
-@media only screen and (max-width:450px){
-    .about{
-        grid-template-columns: repeat(1,1fr);
-         box-shadow:none;
-    }
-    .main_about{
-        padding: 35px 5px 10px 5px;
-    }
-    .about_img{
-        padding:40px 20px 20px 20px
-    }
-    .about_desc{
-        padding: 20px 30px ;
-    }
-}
+    @media screen and (max-width:986px){
+        .about{
+            width: 86%;
+            flex-direction: column;
+            /* height: 120vh; */
+        }
+        .features{
+            width: 86%;
+        }
+        .facilities{
+            flex-wrap: wrap;
+        }
+        .about_img{
+            width:80%;
+        }
+        .about_desc{
+            width: 100%;
+        }
+        }
+        @media screen and (max-width:586px){
+            .about{
+                width: 90%;
+                flex-direction: column;
+            }
+            .features{
+                width: 90%;
+                justify-content: start;
+                margin: 25px auto;
+            }
+            .facilities{
+                margin-top: 20px;
+            }
+            .facilities ul{
+                margin-bottom: 10px;
+            }
+            .aboutushead{
+                margin-top: 0;
+                font-size: 20px;
+                margin-bottom: 0;
+            }
+            .textabout{
+                margin-top: 20px;
+            }
+            .about{
+                margin: 45px auto 25px;
+            }
+            .about_img{
+                width:100%;
+            }
+        }
+    

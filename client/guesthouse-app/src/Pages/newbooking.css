@@ -7,7 +7,8 @@
     align-items: center;
     flex-direction: column;
     padding: 38px;
-    margin-left:200px;}
+    margin-left:200px;
+}
     
 .adminmain-container {
     width: 80%;
@@ -15,16 +16,16 @@
     border: 1px solid white;
     background-color: #fff;
     border-radius: 10px;
+    margin-top: 50px;
     /* margin-bottom: 15px; */
 }
 
 .adminbookingform{
     width: 80%;
-    margin: 30px auto 0 auto;
+    margin: 40px auto 20px auto;
     display: flex;
     padding:10px;
     height:50%;
-    margin-top:70px;
     flex-direction: column;
 }
 .adminbookingform i {
@@ -45,7 +46,7 @@
     display: flex;
     flex-direction: column;
     width: 48%;
-    margin: 10px 0;
+    /* margin: 10px 0; */
 }
 .fname label {
     font-size: 16px;
@@ -53,7 +54,7 @@
     padding: 8px;;
     color: #000;
     pointer-events: none;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
 }
 .fname input {
     /* width: 90%; */
@@ -74,7 +75,7 @@
     display: flex;
     flex-direction: column;
     width: 48%;
-    margin: 10px 0;
+    /* margin: 10px 0; */
 }
 .lname label {
     font-size: 16px;
@@ -82,7 +83,7 @@
     padding: 8px;
     color: #000;
     pointer-events: none;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
 }
 .lname input {
     /* width: 90%; */
@@ -176,7 +177,7 @@ select {
 }
 @media only screen and (max-width:1015px){
     .admincontainer{
-      margin-left: 0;
+      margin-left: 200px;
       padding-top: 50px}
       .adminmain-container {
         width: 85%;
