@@ -14,6 +14,7 @@ export default function Allrooms({setaccomodation}) {
   const savedCheckin = sessionStorage.getItem('checkin');
   const savedCheckout =sessionStorage.getItem('checkout');
   const [rooms, setRooms] = useState([]);
+
   const filterroom = async (room) => {
     const detail = await axios.get(`http://localhost:8082/bookings/${room}`, {
       headers: {
@@ -54,9 +55,11 @@ export default function Allrooms({setaccomodation}) {
           }
         });
         console.log(allrooms)
+
         const newdeluxerooms = allrooms.data.alldeluxerooms;
         const newsinglerooms = allrooms.data.allsinglerooms;
         const newdoublerooms = allrooms.data.alldoublerooms;
+
         const singleroomsg = await Promise.all(
           newsinglerooms.map(async (deluxeroom) => {
             const newdeluxeroom = await Promise.all(
@@ -73,7 +76,7 @@ export default function Allrooms({setaccomodation}) {
             if (newdeluxeroom.length === 0) {
               console.log(deluxeroom)
               return deluxeroom;}
-             }
+            }
              
           )
         );
@@ -98,6 +101,7 @@ export default function Allrooms({setaccomodation}) {
              
           )
         );
+
         const deluxeroomsg = await Promise.all(
           newdeluxerooms.map(async (deluxeroom) => {
             const newdeluxeroom = await Promise.all(
@@ -118,6 +122,7 @@ export default function Allrooms({setaccomodation}) {
              
           )
         );
+
         const singlerooms=singleroomsg.filter(Boolean);
         const deluxerooms=deluxeroomsg.filter(Boolean);
         const doublerooms=doubleroomsg.filter(Boolean)
@@ -179,7 +184,6 @@ export default function Allrooms({setaccomodation}) {
         alert(err);
       }
     };
-
     fetchData();
   });
 

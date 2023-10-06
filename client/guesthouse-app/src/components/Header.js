@@ -45,10 +45,10 @@ export default function Header() {
           <div className='nav_bar_all_res'><MdMenu className="resmenu" onClick={()=>{setshownav(!shownav)}} /></div>
           <div className='nav_links'>
             <ul className={!shownav?'navitems hide':'navitems'}>
-              <li><a href='#' className='header_links' onClick={()=>{setshownav(!shownav)}}>Home</a></li>
+              <li><a href='/home' className='header_links' onClick={()=>{setshownav(!shownav)}}>Home</a></li>
               <li><a href='#about' className='header_links' onClick={()=>{setshownav(!shownav)}}>About Us</a></li>
               <li ><a href='#Gallery' className='header_links' onClick={()=>{setshownav(!shownav)}}>Gallery</a></li>
-              <li><a href="#" className="header_links" onClick={()=>{setshownav(!shownav)}}>Avaibility</a></li>
+              <li><a href="#calender" className="header_links" onClick={()=>{setshownav(!shownav)}}>Avaibility</a></li>
               <li><a href="#contact" className="header_links" onClick={()=>{setshownav(!shownav)}}>Contact Us</a></li>
               <li><Link to='/Bookings' className='header_links' onClick={()=>{setshownav(!shownav)}}>Bookings</Link></li>
               

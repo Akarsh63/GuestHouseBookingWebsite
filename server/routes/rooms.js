@@ -4,6 +4,7 @@ const roommodel=require('../pages/roommodel');
 const usersmodel = require('../pages/usersmodel');
 const middleware=require('../middleware')
 const adminmodel = require('../pages/adminmodel');
+
 router.get('/', (req, res) => res.send('book route testing!'));
 router.post('/enter',middleware,async (req,res)=>{
   let exist=await adminmodel.findById(req.userid);
