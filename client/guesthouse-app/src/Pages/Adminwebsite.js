@@ -23,7 +23,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginTop: '64px',
+    // marginTop: '64px',
     marginLeft: `-${drawerWidth}px`,
     ...(open && {
       transition: theme.transitions.create('margin', {
@@ -82,21 +82,6 @@ export default function Adminwebsite() {
 
   return (
     <div>
-      {/* <Navbar />  */}
-      {/* <Box sx={{mt: '50px', display: 'flex', flexDirection: 'row'}}>
-        <Dashboard/>
-          <Box
-            component='main'
-            sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-          >
-            <Routes>
-                <Route path='/' element={<AdminallBookings />} />
-                <Route path='/details' element={<Detail />}/>
-                <Route path='/rooms' element={<Roomd/>} />
-                <Route path='/newbooking' element={<Newbook/>} />
-            </Routes>
-          </Box>
-      </Box> */}
 
       <AppBar position="fixed" open={open}>
         <Toolbar>

@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import './registration.css'
 import { FaUser,FaLock } from "react-icons/fa";
 import { Box, TextField } from '@mui/material';
+import { motion } from "framer-motion"
 
 
 export default function AdminLoginpage() {
@@ -42,7 +43,6 @@ export default function AdminLoginpage() {
     <Box
     sx={{
       background:`linear-gradient(0deg,rgba(7,15,41,.8549019607843137),rgba(25,34,61,.623) 20%,rgba(84,103,161,.39),hsla(0,0%,100%,0)),url('https://www.hindustantimes.com/ht-img/img/2023/06/09/1600x900/iit_jodhpur_1686300921343_1686300927090.jpg') `,
-      // backgroundImage: `url('https://www.hindustantimes.com/ht-img/img/2023/06/09/1600x900/iit_jodhpur_1686300921343_1686300927090.jpg')`,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
@@ -55,7 +55,11 @@ export default function AdminLoginpage() {
       alignItems:'center'
     }}
   >
-            <div class="container">
+            <motion.div class="container"
+              initial={{scale: 0}}
+              animate={{scale: 1}}
+              transition={{duration: 0.5}}
+            >
                     <div className="signin-form">
                         <h2 className="form-title">IIT JODHPUR ADMIN LOGIN</h2>
                         <form  className="register-form" onSubmit={onsubmit} id="login-form">
@@ -70,7 +74,7 @@ export default function AdminLoginpage() {
                             </div>
                         </form>
                     </div>
-            </div>
+            </motion.div>
     </Box>
   )
 }

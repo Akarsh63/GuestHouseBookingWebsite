@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 import './registration.css'
-import signUpImage from '../images/singUp-image.jpg';
-import { FaUser,FaLock } from "react-icons/fa";
-import { MdMail } from "react-icons/md";
 import { MuiOtpInput } from 'mui-one-time-password-input'
 import {  Button, Grid, TextField, Typography } from '@mui/material';
+import {motion} from 'framer-motion';
+
+
 export default function Registrationpage({setStudentlogin}) {
   const [page,setpage]=useState(0);
   const [otp, setOtp] =useState('');
@@ -180,7 +180,11 @@ export default function Registrationpage({setStudentlogin}) {
     }
   }
   return (
-            <div class="container otpform">
+            <motion.div class="container otpform"
+              initial={{scale: 0}}
+              animate={{scale: 1}}
+              transition={{duration: 0.5}}
+            >
                     <div class="signup-form">
                         <h2 class="form-title reg-title">IIT JODHPUR STUDENT REGISTRATION</h2>
                       {reggetform()}
@@ -188,6 +192,6 @@ export default function Registrationpage({setStudentlogin}) {
                         Already have an Account?<Link to='#' className="signin-link" onClick={()=>{setStudentlogin(0)}}>Login</Link>
                         </Typography>
                     </div>
-            </div> 
+            </motion.div> 
   )
 }

@@ -7,6 +7,9 @@ import Select from '@mui/material/Select';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import './login.css'
 import {  useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Iitjguesthouseloginregister() {
   const navigate = useNavigate();
@@ -16,7 +19,7 @@ export default function Iitjguesthouseloginregister() {
   };
   const handlelogin=(e)=>{
     if(loginType===""){
-alert('fill all')
+        toast.error('Please select a value from user type')
     }
     else if(loginType===1){
       navigate('/admin-login')
@@ -63,27 +66,47 @@ alert('fill all')
         <Grid item>
           <Typography className='animatedtext' sx={{color:'#fff',fontWeight:'600',fontSize:'27px',marginTop:'10px',textAlign:'center'}}>Indian Institute of Technology Jodhpur</Typography>
         </Grid>
-        <Grid container sx={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:'20px',gap:'20px'}}>
-          <Grid item>
-              <FormControl variant="filled" sx={{ m: 1, minWidth:200,backgroundColor:'#fff'}} >
-                <InputLabel id="demo-simple-select-filled-label">Select User Type</InputLabel>
-                <Select
-                  labelId="demo-simple-select-filled-label"
-                  id="demo-simple-select-filled"
-                  value={loginType}
-                  onChange={handleChange}
-                >
-                  <MenuItem value={1}>Admin</MenuItem>
-                  <MenuItem value={2}>Faculty</MenuItem>
-                  <MenuItem value={3}>Student</MenuItem>
-                </Select>
-              </FormControl>
+        <motion.div 
+          // animate= {{x: 100}}
+          initial={{opacity: 0, x: 500}}
+          animate={{opacity: 1, x: 0}}
+          transition={{delay: 2, duration: 1, ease: 'easeOut'}}
+          exit={{x: -1000, transition: {ease: 'easeInOut'}, duration: 2 }}
+        >
+          <Grid container sx={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:'20px',gap:'20px'}}>
+            <Grid item>
+                <FormControl variant="filled" sx={{ m: 1, minWidth:200,backgroundColor:'#fff'}} >
+                  <InputLabel id="demo-simple-select-filled-label">Select User Type</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-filled-label"
+                    id="demo-simple-select-filled"
+                    value={loginType}
+                    onChange={handleChange}
+                  >
+                    <MenuItem value={1}>Admin</MenuItem>
+                    <MenuItem value={2}>Faculty</MenuItem>
+                    <MenuItem value={3}>Student</MenuItem>
+                  </Select>
+                </FormControl>
+            </Grid>
+            <Grid item>
+                <Button variant='outlined' style={{borderColor:'#fff',color:'#fff',padding:'10px'}} endIcon={<LoginOutlinedIcon />} onClick={handlelogin}>Login</Button>
+            </Grid>
           </Grid>
-          <Grid item>
-              <Button variant='outlined' style={{borderColor:'#fff',color:'#fff',padding:'10px'}} endIcon={<LoginOutlinedIcon />} onClick={handlelogin}>Login</Button>
-          </Grid>
-        </Grid>
+        </motion.div>
       </Grid>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </Box>
   );
 }

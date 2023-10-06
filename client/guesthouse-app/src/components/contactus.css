@@ -5,6 +5,16 @@
   width: 85%;
   margin: auto;
   margin-bottom:50px;
+  padding-top: 90px;
+}
+.hover-contact:hover {
+  transform: scale(1.05);
+  color: brown;
+  cursor: pointer;
+}
+.css-h82k3b-MuiPaper-root:hover {
+  transform: scale(1.05);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 25px;
 }
 @media only screen and (max-width:900px){
   .contact-details{

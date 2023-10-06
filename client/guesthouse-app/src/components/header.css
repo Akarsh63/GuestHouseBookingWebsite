@@ -1,11 +1,7 @@
-
- 
-  
-  
   .nav_bar{
     width: 100%;
-    /* display: block; */
-    /* background-color: #fff; */
+    position: relative;
+    z-index: 999;
   }
   .nav_bar_all_res{
     display: none;
@@ -85,7 +81,7 @@
     background-color: #f66524;
   }
 
-@media only screen and (max-width:992px) and (min-width:768px){
+@media only screen and (max-width:1150px) and (min-width:992px){
     .header_links{
         font-size: 16px;
       }
@@ -95,7 +91,7 @@
      .nav_bar_all{
     padding: 15px 5%;}
 }
-@media only screen and (max-width:768px){
+@media only screen and (max-width:992px){
     .header_links{
         font-size: 18px;
       }
@@ -112,7 +108,7 @@
         display: block;
     }
     .logo{
-        color: #fff;
+        /* color: #fff; */
         justify-content: left;
     }
     .nav_bar{

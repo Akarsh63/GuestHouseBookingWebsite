@@ -21,11 +21,13 @@ import Facultyform from './components/Facultyform';
 import Facultybookings from './components/Facultybookings';
 import Iitjguesthouseloginregister from './Pages/Iitjguesthouseloginregister';
 import Studentlogin from './Pages/Studentlogin';
+import Gallery from './components/Gallery';
 function App() {
   return (
     <Router>
       <Scrolltop />
        <Routes>
+          <Route path='/gallery' element={<Gallery />} />
           <Route path='/' element={<Iitjguesthouseloginregister />}/>
           <Route path='/student-login' element={<Studentlogin />} />
           <Route path='/admin-login' element={<AdminLoginpage />} />

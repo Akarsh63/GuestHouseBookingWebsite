@@ -2,10 +2,10 @@ import React from 'react'
 import './features.css'
 export default function Features() {
   return (
-    <div>
-       <div className='about'>
+      <div id='about' className='Container-features'>
+         <div className='about'>
             <div className='about_img'>
-                <img src='https://qph.cf2.quoracdn.net/main-qimg-8eb932410b54b3c315d91bee4b11efd0-lq' alt="Guest hpouse" />
+               <img src='https://qph.cf2.quoracdn.net/main-qimg-8eb932410b54b3c315d91bee4b11efd0-lq' alt="Guest hpouse" />
             </div>
             <div className='about_desc'>
                <h2 className='aboutushead'>ABOUT US</h2>
@@ -17,43 +17,43 @@ export default function Features() {
                      Hence, it has established state-of-the-art laboratories for basic research, and has organised its 
                      academic degree activities through Departments and its coordinated research through Centers for Technologies.</p>
             </div>
-       </div>
-       <div className='features'>
-         <div><h2 className='aboutushead'>Facilities</h2></div>
-         <div className='facilities'>
-           <div>
-            <ul>
-               <li>AC Rooms</li>
-               <li>Dining Hall</li>
-               <li>Free High Speed Wi-fi Internet</li>
-               <li>Work desk</li>
-               <li>24 X 7 Medical Facility</li>
-               <li>Hygenic Washroom</li>
-            </ul>
-           </div>
-           <div>
-            <ul>
-            <li>24 X 7 CC TV Surveillance</li>
-               <li>Restaurant</li>
-               <li>Breakfast, Lunch, Dinner</li>
-               <li>Mineral Water</li>
-               <li>Dataport</li>
-               <li>Water Purification System</li>
-               </ul>
-           </div>
-           <div>
-            <ul>
-               <li>Car Parking</li>
-               <li>Lush Green Campus</li>
-               <li>24 X 7 Security service</li>
-               <li>Telephone service</li>
-               <li>Laundry service</li>
-               <li>Tea making (in Room) facilities</li>
-               </ul>
-           </div>
-           </div>
-       </div>
-       </div>
+         </div>
+         <div className='features'>
+            <div><h2 className='aboutushead'>Facilities</h2></div>
+            <div className='facilities'>
+               <div>
+                  <ul>
+                     <li>AC Rooms</li>
+                     <li>Dining Hall</li>
+                     <li>Free High Speed Wi-fi Internet</li>
+                     <li>Work desk</li>
+                     <li>24 X 7 Medical Facility</li>
+                     <li>Hygenic Washroom</li>
+                  </ul>
+               </div>
+               <div>
+                  <ul>
+                  <li>24 X 7 CC TV Surveillance</li>
+                     <li>Restaurant</li>
+                     <li>Breakfast, Lunch, Dinner</li>
+                     <li>Mineral Water</li>
+                     <li>Dataport</li>
+                     <li>Water Purification System</li>
+                     </ul>
+               </div>
+               <div>
+                  <ul>
+                     <li>Car Parking</li>
+                     <li>Lush Green Campus</li>
+                     <li>24 X 7 Security service</li>
+                     <li>Telephone service</li>
+                     <li>Laundry service</li>
+                     <li>Tea making (in Room) facilities</li>
+                     </ul>
+               </div>
+            </div>
+         </div>
+      </div>
   )
 }
 

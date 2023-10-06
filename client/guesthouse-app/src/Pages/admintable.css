@@ -2,14 +2,13 @@
 /* <-------Room adding Form css --------> */
 
 .mainss{
-  height: 100vh;
-  /* min-height: calc(100vh - 65px); */
-  overflow-y: hidden;
+  height: 100%;
+  min-height: 100vh;
   margin-left: 200px;
   display: grid;
   grid-template-columns: repeat(2,1fr);
   align-items: center;
-  background:#303841;;
+  background:#303841;
 }
 .extra {
   margin: auto;
@@ -104,6 +103,7 @@
     justify-content: center;
     /* align-items: center; */
     margin-left: 200px;
+    margin-top: 60px;
 }
 .table1{
   width: 60%;
@@ -178,12 +178,13 @@ margin-top:40px;
 
 .maintable{
     background-color:#f7f7f7;
-    margin-left: 200px;
+    /* margin-left: 200px; */
     height:100%;
     min-height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* margin-top: 50px; */
  }
 
  .table{
@@ -236,9 +237,9 @@ margin-top:40px;
   background-color: #ccc;
 }
  @media only screen and (max-width:1015px){
-.maintable,.main1,.mainss{
-  /* margin-left: 0; */
-}
+/* .maintable,.main1,.mainss{
+  margin-left: 0;
+} */
 
 }
 @media only screen and (max-width:899.94px){
@@ -271,7 +272,8 @@ margin-top:40px;
     align-items: center;
     padding-top: 50px;
     padding-bottom: 50px;
-    gap:50px
+    gap:50px;
+    margin-top: 50px;
   }
   .maintable{
     padding-top: 50px;

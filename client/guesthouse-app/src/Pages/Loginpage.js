@@ -5,9 +5,8 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import './registration.css'
 import TextField from '@mui/material/TextField';
-import { FaUser,FaLock } from "react-icons/fa";
 import { Typography } from '@mui/material';
-// import Userid from '../UserId/Userid';
+import {motion} from 'framer-motion'
 
 export default function Loginpage({setStudentlogin}) {
   const [_, setCookies] = useCookies(["access_token"]);
@@ -35,7 +34,11 @@ export default function Loginpage({setStudentlogin}) {
     }
   }
   return (
-            <div className="container">
+            <motion.div className="container"
+              initial={{scale: 0}}
+              animate={{scale: 1}}
+              transition={{duration: 0.5}}
+            >
                     <div className="signin-form">
                         <h2 className="form-title">IIT JODHPUR STUDENT LOGIN</h2>
                         <form onSubmit={onsubmit} className="login-form">
@@ -56,7 +59,7 @@ export default function Loginpage({setStudentlogin}) {
                         Don't have an Account?<Link to='#' className="signup-link" onClick={()=>{setStudentlogin(1)}}>Create an account</Link>
                         </Typography>
                     </div>
-            </div>
+            </motion.div>
 
   )
 }
