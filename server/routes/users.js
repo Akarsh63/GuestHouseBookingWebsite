@@ -252,7 +252,7 @@ router.post('/facultylogin',async(req,res)=>{
     //     }
         
     // });
-    return res.status(200).json({message:"LOGIN Successfull"})
+    return res.status(200).json({message:"LOGIN Successfull",userId:user._id})
 })
 
 
