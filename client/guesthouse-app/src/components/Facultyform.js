@@ -48,12 +48,21 @@ export default function Facultyform() {
   };
   // console.log(userId);
   //const { userId } = useParams();
+  const [selectedRoomNumbers, setSelectedRoomNumbers] = useState([]);
+  const [selectedRoomtype, setSelectedRoomtype] = useState([]);
   const [selectedStartDate,setselectedStartDate]=useState(null);
   const [selectedEndDate,setselectedEndDate]=useState(null);
   const [doubleRooms,setdoubleRooms]=useState([])
    const [singleRooms,setsingleRooms]=useState([]);
    const [deluxeRooms,setdeluxeRooms]=useState([]);
    const [availableRooms,setAvailableRooms]=useState([]);
+   const [rr,setrr]=useState([]);
+   
+   useEffect(() => {
+    setSelectedRoomNumbers([]);
+    setSelectedRoomtype([]);
+  }, [selectedStartDate, selectedEndDate]);
+
   useEffect(() => {
     const fetchAvailableRooms = async () => {
       //e.preventdefault();
@@ -64,39 +73,32 @@ export default function Facultyform() {
               'x-token': cookies.faculty_access_token
             }
           });
-          // const newdeluxe = roomsResponse.data.alldeluxerooms;
-          // const newdouble = roomsResponse.data.alldoublerooms;
-          // const newsingle = roomsResponse.data.allsinglerooms;
-          // console.log(newdeluxe);
-          // console.log(newdouble);
-          // console.log(newsingle);
+          
           const allRooms = roomsResponse.data.allrooms;
-          console.log(allRooms)
+          //console.log(allRooms)
+          setrr(allRooms);
 
-          const bookingsResponse = await axios.get(`http://localhost:8082/bookings/book`, {
-            headers: {
-              'x-token': cookies.faculty_access_token
-            }
-          });
+          const bookingsResponse = await axios.get(`http://localhost:8082/bookings/book`);
           // const userresponse= await axios.get(`http://localhost:8082/users/facultylogin`, {
           //   headers: {
           //     'x-token': cookies.faculty_access_token
           //   }
           // });
           const bookings = bookingsResponse.data.Bookings;
-          console.log(bookings);
+         // console.log(bookings);
            //const alllRooms=[];
            //allRooms.push({newdeluxe,newdouble,newsingle});
-             console.log(allRooms);
+             //.console.log(allRooms);
           const availablerooms = allRooms.filter((room) => {
             const booked = bookings.some((booking) => {
               const bookedIn = dayjs(booking.fromdate).format('DD-MM-YYYY');
               const bookedOut = dayjs(booking.enddate).format('DD-MM-YYYY');
               const checkIn = dayjs(selectedStartDate).format('DD-MM-YYYY');
+              //console.log(checkIn)
               const checkOut = dayjs(selectedEndDate).format('DD-MM-YYYY');
               
             //   console.log(checkIn);
-            //  console.log(bookedIn);
+             //console.log(bookedIn);
              if (booking.rooms.includes(room.roomnumber)) {
               if (
                 (checkIn <= bookedOut && checkIn >= bookedIn) ||
@@ -125,35 +127,64 @@ export default function Facultyform() {
         });
     
         setAvailableRooms(availablerooms);
-        console.log(availableRooms);
+        //console.log(availableRooms);
       
     const availableDoubleRooms = availablerooms.filter((room) => room.options === 'Double');
           //console.log("h");
-    setdoubleRooms(availableDoubleRooms);
-    console.log(doubleRooms)
+   // setdoubleRooms(availableDoubleRooms._id);
+    const doubleRoomIds = availableDoubleRooms.map((room) => room._id);
+     setdoubleRooms(doubleRoomIds);
+    console.log(doubleRoomIds)
     const availableSingleRooms = availablerooms.filter((room) => room.options === 'Single');
-    setsingleRooms(availableSingleRooms);
-    console.log(singleRooms)
+    const singleRoomIds = availableSingleRooms.map((room) => room._id);
+     setsingleRooms(singleRoomIds);
+     console.log(singleRoomIds
+      );
     const availableDeluxeRooms = availablerooms.filter((room) => room.options === 'Deluxe');
-    setdeluxeRooms(availableDeluxeRooms);
-    console.log(deluxeRooms)
+    //setdeluxeRooms(availableDeluxeRooms._id);
+    const deluxeRoomIds = availableDeluxeRooms.map((room) => room._id);
+     setdeluxeRooms(deluxeRoomIds);
+    console.log(deluxeRoomIds)
         } catch (error) {
           console.log("Error fetching available rooms:", error);
         }
       };
+      
       
 
     if (selectedStartDate!=null && selectedEndDate!=null) {
       fetchAvailableRooms();
     }
   }, [selectedStartDate, selectedEndDate]);
-   console.log(userId);
+   //console.log(userId);
+   
+   //onsole.log(selectedStartDate);
+   const sselectedStartDate=dayjs(selectedStartDate).format('DD-MM-YYYY');
+   const sselectedEndDate=dayjs(selectedStartDate).format('DD-MM-YYYY');
+ //  console.log(sselectedStartDate);
+   //console.log(sselectedEndDate);
   const [detail,setdetail]=useState({fname1:'',lname1:'',email:"",phone:'',address:'',person:'',roomstype:[],roomnumber:[],meal:'',purpose:'',request:''});
   const handleFormSubmission = async () => {
     // Validate the form data if needed
-    
     try {
-      console.log("22");
+      console.log({
+        firstname: detail.fname1,
+        lastname: detail.lname1,
+        email: detail.email,
+        phone: detail.phone,
+        address: detail.address,
+        roomnumber: detail.roomnumber,
+        roomstype: detail.roomstype,
+        person: detail.person,
+        meals:detail.meal,
+        //purpose: detail.purpose,
+        specialrequest:detail.request,
+        userType:'faculty',
+        fromdate:sselectedStartDate,
+        enddate:sselectedEndDate,
+        userId:userId,
+        // Add any other fields you need to send
+      });
       const response = await axios.post(
         'http://localhost:8082/bookings/bookss',
         {
@@ -169,11 +200,11 @@ export default function Facultyform() {
           //purpose: detail.purpose,
           specialrequest:detail.request,
           userType:'faculty',
-          fromdate:selectedStartDate,
-          enddate:selectedEndDate,
+          fromdate:sselectedStartDate,
+          enddate:sselectedEndDate,
           userId:userId,
           // Add any other fields you need to send
-        },
+        }
         // {
         //   headers: {
         //     'x-token': cookies.admin_access_token, // Replace with your authentication token
@@ -194,6 +225,7 @@ export default function Facultyform() {
         roomstype: [],
         person: '',
         meal:'',
+        userId:'',
         //purpose: '',
       });
       setAvailableRooms([]);
@@ -209,7 +241,67 @@ export default function Facultyform() {
       }
     }
   };
-  console.log("21");
+ // console.log("21");
+ 
+ useEffect(() => {
+  console.log(selectedRoomNumbers);
+  console.log(selectedRoomtype);
+
+  setdetail((prevdetail) => ({
+    ...prevdetail,
+    roomnumber: selectedRoomNumbers,
+    roomtype: selectedRoomtype,
+  }));
+}, [selectedRoomNumbers, selectedRoomtype]);
+
+ 
+
+const handleRoomCheckboxChange = (roomId, roomType) => {
+  console.log(selectedRoomNumbers);
+
+  
+    console.log(selectedRoomNumbers);
+  
+    if (selectedRoomNumbers.includes(roomId)) {
+      // If the room ID is already in the selected list, remove it
+      setSelectedRoomNumbers((prevSelectedRoomNumbers) =>
+        prevSelectedRoomNumbers.filter((id) => id !== roomId)
+      );
+  
+      // Remove the corresponding room type if it exists
+      
+      setSelectedRoomtype((prevSelectedRoomtype) =>
+      prevSelectedRoomtype.filter(
+        (type, index) => selectedRoomNumbers[index] !== roomId
+      )
+    );
+    } else {
+      // If the room ID is not in the selected list, add it
+      setSelectedRoomNumbers((prevSelectedRoomNumbers) => [
+        ...prevSelectedRoomNumbers,
+        roomId
+      ]);
+      setSelectedRoomtype((prevSelectedRoomtype) => [
+        ...prevSelectedRoomtype,
+        roomType
+      ]);
+    
+      // Add the corresponding room type if it doesn't exist
+    
+    }
+    
+    
+  
+    // Your code to observe the updated state and call setdetail if needed
+  
+
+  // Your code to observe the updated state and call setdetail if needed
+};
+
+
+
+
+
 
   const renderStepContent = (stepIndex) => {
     switch (stepIndex) {
@@ -333,18 +425,35 @@ export default function Facultyform() {
                                 
                                 {
                                   
-                                doubleRooms.map((doubleroom)=>{
-                                  console.log(doubleRooms);
-                                    return <FormControlLabel control={<Checkbox
-                                      checked={detail.roomnumber === doubleroom.roomnumber}
-                                      onChange={(e) => {
-                                        const newRoomNumber = e.target.checked ? doubleroom.roomnumber : '';
-                                        setdetail({ ...detail, roomnumber: newRoomNumber });
-                                      }}
-                                      value={doubleroom.roomnumber}
-                                    />}
-                                    label={doubleroom.roomnumber} />
-                                })}
+                                  doubleRooms.map((roomId) => {
+                                    // Assuming that `roomId` is a string representing the room ID
+                                    const room = rr.find((room) => room._id === roomId); // Find the room object based on ID
+                                  
+                                    if (!room) {
+                                      // Handle the case where the room object is not found
+                                      return null;
+                                    }
+                                    const roomType='Double'
+                                  
+                                    return (
+                                      <FormControlLabel
+                                       // key={room._id}
+                                        
+                                        control={
+                                          <Checkbox
+                                         // checked={selectedRoomNumbers.includes(room._id)}
+                                         value={room._id}
+                                          onChange={() => handleRoomCheckboxChange(room._id,roomType)
+                                            }
+                                          
+                                           
+                                          />
+                                        }
+                                        label={room.roomnumber}
+                                      />
+                                    );
+                                  })
+                                  }
                             </FormGroup>
                             </AccordionDetails>
                         </Accordion>
@@ -357,24 +466,37 @@ export default function Facultyform() {
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                             >
-                            <Typography value="single">Single Rooms</Typography>
+                            <Typography>Single Rooms</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
                             <FormGroup>
                             <Typography sx={{marginBottom:'10px'}}>Our Sinle room is large and comfortable. It's spacious enough for one adult and comfortable. The room is thoughtfully furnished and equipped with all the essentials for a pleasant stay.</Typography>
-                                {singleRooms.map((singleroom)=>{
-                                    return <FormControlLabel
-                                    control={<Checkbox
-                                      checked={detail.roomnumber === singleroom.roomnumber}
-                                      onChange={(e) => {
-                                        const newRoomNumber = e.target.checked ? singleroom.roomnumber : '';
-                                        setdetail({ ...detail, roomnumber: newRoomNumber });
-                                      }}
-                                      value={singleroom.roomnumber}
-                                    />}
-                                    label={singleroom.roomnumber}
-                                  />
-                                })}
+                                {singleRooms.map((roomId) => {
+                                    // Assuming that `roomId` is a string representing the room ID
+                                    const room = rr.find((room) => room._id === roomId); // Find the room object based on ID
+                                  
+                                    if (!room) {
+                                      // Handle the case where the room object is not found
+                                      return null;
+                                    }
+                                    const roomType='Single'
+                                  
+                                    return (
+                                      <FormControlLabel
+                                        key={room._id}
+                                        
+                                        control={
+                                          <Checkbox
+                                                  value={room._id}
+                                                  //checked={value}
+                                                  onChange={() => handleRoomCheckboxChange(room._id,roomType)}
+                                                  
+                                                />
+                                        }
+                                        label={room.roomnumber}
+                                      />
+                                    );
+                                  })}
                             </FormGroup>
                             </AccordionDetails>
                         </Accordion>
@@ -391,17 +513,32 @@ export default function Facultyform() {
                             <AccordionDetails>
                             <FormGroup>
                             <Typography sx={{marginBottom:'10px'}}>Our Deluxe room is large and comfortable. It's spacious enough for four adults and comfortable. The room is thoughtfully furnished and equipped with all the essentials for a pleasant stay.</Typography>
-                                {deluxeRooms.map((deluxeroom)=>{
-                                    return <FormControlLabel control={<Checkbox
-                                      checked={detail.roomnumber === deluxeroom.roomnumber}
-                                      onChange={(e) => {
-                                        const newRoomNumber = e.target.checked ? deluxeroom.roomnumber : '';
-                                        setdetail({ ...detail, roomnumber: newRoomNumber });
-                                      }}
-                                      value={deluxeroom.roomnumber}
-                                    />}
-                                    label={deluxeroom.roomnumber} />
-                                })}
+                                {deluxeRooms.map((roomId) => {
+                                    // Assuming that `roomId` is a string representing the room ID
+                                    const room = rr.find((room) => room._id === roomId); // Find the room object based on ID
+                                  
+                                    if (!room) {
+                                      // Handle the case where the room object is not found
+                                      return null;
+                                    }
+                                    const roomType='Deluxe'
+                                  
+                                    return (
+                                      <FormControlLabel
+                                        key={room._id}
+                                        
+                                        control={
+                                          <Checkbox
+                                          //checked={selectedRoomNumbers.includes(room._id)}
+                                          value={room._id}
+                                          onChange={() => handleRoomCheckboxChange(room._id,roomType)}
+                                          //
+                                          />
+                                        }
+                                        label={room.roomnumber}
+                                      />
+                                    );
+                                  })}
                             </FormGroup>
                             </AccordionDetails>
                         </Accordion>
