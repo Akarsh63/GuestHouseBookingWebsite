@@ -4,7 +4,6 @@
 .mainss{
   height: 100%;
   min-height: 100vh;
-  margin-left: 200px;
   display: grid;
   grid-template-columns: repeat(2,1fr);
   align-items: center;
@@ -102,7 +101,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-left: 200px;
 }
 .table1{
   width: 60%;
@@ -176,13 +174,13 @@ margin-top:40px;
 /*<--------- Table.js css---------> */
 
 .maintable{
-    background-color:#f7f7f7;
-    margin-left: 200px;
+    width: 100%;
     height:100%;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 0;
  }
 
  .table{
@@ -190,7 +188,7 @@ margin-top:40px;
   height: 100%;
  }
  .tab{
-  margin: 50px 50px;
+  margin: 0px 0px;
  }
   .tab.MuiTableRow-root{
     height:20px;
@@ -234,12 +232,7 @@ margin-top:40px;
 .copy:active{
   background-color: #ccc;
 }
- @media only screen and (max-width:1015px){
-.maintable,.main1,.mainss{
-  margin-left: 0;
-}
 
-}
 @media only screen and (max-width:899.94px){
   .tss-1t2q2nr-MUIDataTableBodyCell-stackedHeader{
     display:none !important;
@@ -262,18 +255,14 @@ margin-top:40px;
     
   }
   .tab{
-    margin: 50px 30px;
+    margin: 0px 30px;
    }
    .mainss{
     grid-template-columns: repeat(1,1fr);
     grid-template-rows: repeat(2,1fr);
     align-items: center;
-    padding-top: 50px;
     padding-bottom: 50px;
     gap:50px
-  }
-  .maintable{
-    padding-top: 50px;
   }
   }
   @media only screen and (max-width:576px){

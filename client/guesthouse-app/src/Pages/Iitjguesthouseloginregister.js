@@ -61,11 +61,11 @@ alert('fill all')
 
         </Grid>
         <Grid item>
-          <Typography className='animatedtext' sx={{color:'#fff',fontWeight:'600',fontSize:'27px',marginTop:'10px',textAlign:'center'}}>Indian Institute of Technology Jodhpur</Typography>
+          <Typography className='animatedtext animatedtext2' sx={{color:'#fff',fontWeight:'600',fontSize:'27px',marginTop:'10px',textAlign:'center'}}>Indian Institute of Technology Jodhpur</Typography>
         </Grid>
-        <Grid container sx={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:'20px',gap:'20px'}}>
+        <Grid container sx={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:'20px',gap:'20px'}} className='logintype' >
           <Grid item>
-              <FormControl variant="filled" sx={{ m: 1, minWidth:200,backgroundColor:'#fff'}} >
+              <FormControl variant="filled" sx={{ m: 1, minWidth:200,backgroundColor:'#fff'}} className='logintype-container'>
                 <InputLabel id="demo-simple-select-filled-label">Select User Type</InputLabel>
                 <Select
                   labelId="demo-simple-select-filled-label"
@@ -80,7 +80,7 @@ alert('fill all')
               </FormControl>
           </Grid>
           <Grid item>
-              <Button variant='outlined' style={{borderColor:'#fff',color:'#fff',padding:'10px'}} endIcon={<LoginOutlinedIcon />} onClick={handlelogin}>Login</Button>
+              <Button variant='outlined' style={{borderColor:'#fff',color:'#fff',padding:'10px'}} endIcon={<LoginOutlinedIcon />} onClick={handlelogin} className='logintype-button'>Login</Button>
           </Grid>
         </Grid>
       </Grid>

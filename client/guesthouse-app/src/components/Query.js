@@ -17,9 +17,10 @@ export default function Query() {
     };
   }, []);
   return (
+    <div className='homecomp4'>
     <div className='query-form-container'>
         <div className='query-form'>
-            <h2 className='aboutushead'>Get in Touch!</h2>
+            <h2 className='aboutushead' style={{color:"rgb(0,0,0)"}}>Get in <span style={{color:"rgb(255,0,0)"}}>Touch!</span></h2>
             <form action="https://formspree.io/f/xyyqgpeq" method="POST" className='query-input-container'>
                 <div className='query-input'>
                     <input type='text' name="first-name" id="first-name" autoComplete='off' placeholder='Enter your Username'/>
@@ -36,9 +37,10 @@ export default function Query() {
             </form>
         </div>
         <div className='map-container'>
+          
           <div class="mapouter"><div class="gmap_canvas"><iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=iit jodhpur&t=&z=13&ie=UTF8&iwloc=&output=embed" style={{ frameborder: "0", scrolling: "no", marginheight: "0", marginwidth: "0" }}></iframe><a href="https://2yu.co">2yu</a><br /><a href="https://embedgooglemap.2yu.co/">html embed google map</a></div></div>
         </div>
     </div>
-        
+    </div>
   )
 }

@@ -3,12 +3,20 @@ import axios from 'axios';
 import Table from '../components/Table';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import { Box } from '@mui/material';
+import { Grid } from '@mui/material';
+import { Button } from '@mui/material';
+
+
+
 const AdminallBookings=(() =>{ 
     const navigate = useNavigate();
     const [cookies] = useCookies(['admin_access_token']);
     useEffect(()=>{if(!cookies.admin_access_token){navigate('/adminlogin')}})
     const [booking,setbooking]=useState([]);
     const [refresh,setrefresh]=useState(false);
+    const [change, setChange] = useState(false);
+    console.log(change)
      useEffect(()=>{
         console.log(2)
         const getting=async()=>{
@@ -26,7 +34,23 @@ const AdminallBookings=(() =>{
             }}
         getting();
     },[refresh]);
-    return (<Table booking={booking} setrefresh={setrefresh} />);
+
+    console.log(window.location.href)
+    return (
+      <Box sx={{paddingTop: '120px',width:'90%',margin:'auto'}}>
+        <Grid container sx={{display: 'flex', flexDirection: 'row', gap:'20px'}} >
+          <Button variant='contained' onClick={(e) => setChange(false)} style={{backgroundColor:'#1c58d9'}}>Students</Button>
+          <Button variant='contained' onClick={(e) => setChange(true)} style={{backgroundColor:'#1c58d9'}}>Faculty</Button>
+        </Grid>
+        {
+          change ? (
+            <Table booking={booking} setrefresh={setrefresh} />
+          ) : (
+            <Table booking={booking} setrefresh={setrefresh} />
+          )
+        }
+      </Box>
+    );
 });
     
 export default AdminallBookings;

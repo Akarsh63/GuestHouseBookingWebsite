@@ -1,11 +1,11 @@
 import React from 'react';
 import Paper from '@mui/material/Paper';
+import './contactus.css'
 import { Box, Grid, Link, Typography } from '@mui/material';
 
 export default function Contactcomponent({ heading, data, icon }) {
   return (
-    <Paper sx={{ width: '100%' }} elevation={4}>
-      <Box style={{ padding: '20px 30px' }}>
+    <Box className='contactcomponent'>
         <Grid
           container
           sx={{
@@ -16,19 +16,18 @@ export default function Contactcomponent({ heading, data, icon }) {
             alignItems: 'center',
           }}
         >
-          <Grid item style={{ textAlign: 'center' }}>
-            {icon}
+          <Grid item style={{ textAlign: 'center', }}>
+              {icon}
           </Grid>
           <Grid item style={{ textAlign: 'center' }}>
-            <Typography sx={{ fontWeight: '700', fontSize: '24px' }}>
+            <Typography sx={{ fontWeight: '600', fontSize: '20px',color:'rgb(113, 42, 42)' }}>
               {heading}
             </Typography>
           </Grid>
           <Grid item style={{ textAlign: 'center' }}>
-            <Link sx={{ textDecoration: 'none', color: '#000' }}>{data}</Link>
+            <Link sx={{ textDecoration: 'none', color: '#333' }}>{data}</Link>
           </Grid>
         </Grid>
       </Box>
-    </Paper>
   );
 }

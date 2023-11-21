@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react'
 import './bookings.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdMenu } from "react-icons/md";
+import Header from '../components/Header'
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 export default function Bookings() {
@@ -56,20 +57,21 @@ export default function Bookings() {
 
             <div className='nav_bar_all coln' style={{ opacity: 1}}>
             <div className='nav_bar_all_res'><MdMenu className="resmenu" onClick={()=>{setshownav(!shownav)}} /></div>
-            <div className='logo'>
+            <div className='logo' style={{color:'#fff'}}>
                 IIT JODHPUR
             </div>
-            <div className='nav_links'>
-                <ul className={!shownav?'navitems hide':'navitems'}>
-                    <li><Link to='/Home' className='header_links' onClick={()=>{setshownav(!shownav)}}>Home</Link></li>
-                    <li><Link to='/Bookings' className='header_links' onClick={()=>{setshownav(!shownav)}}>Bookings</Link></li>
-                    <li><Link to='/Home' className='header_links' onClick={()=>{setshownav(!shownav)}}>Contact us</Link></li>
-                    <li><button onClick={logout}>Logout</button></li>
+            <div className='nav_links'  style={{color:'#fff'}}>
+                <ul className={!shownav?'navitems hide':'navitems'} style={{color:'#fff'}}>
+                    <li><Link to='/Home' className='header_links' onClick={()=>{setshownav(!shownav)}} style={{color:'#fff'}}>Home</Link></li>
+                    <li><Link to='/Bookings' className='header_links' onClick={()=>{setshownav(!shownav)}} style={{color:'#fff'}}>Bookings</Link></li>
+                    {/* <li><Link to='/Home' className='header_links' onClick={()=>{setshownav(!shownav)}}>Contact us</Link></li> */}
+                    <li><button onClick={logout} style={{color:'#fff'}}>Logout</button></li>
                 </ul>
             </div>
             </div>
             
         </div>
+        {/* <Header /> */}
         <div className='main_contain'>
             <div className='contain_head'>Check your bookings</div>
             <div className='projectssearchbar' style={{display: nobookings ? 'none' : 'block'}} >

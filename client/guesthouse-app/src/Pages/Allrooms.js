@@ -43,7 +43,6 @@ export default function Allrooms({setaccomodation}) {
   };
 }
 
-  
   useEffect(() => {
     const fetchData = async () => {
       try {

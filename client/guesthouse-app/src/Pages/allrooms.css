@@ -21,9 +21,12 @@
     justify-content: center;
 }
 .searchresultsinfo button{
-    background-color:#025464;
+    background: linear-gradient(to right, #000 50%, #025464 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .4s ease-out;
     color: #fff;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     font-size: 18px;
     outline: none;
     border: none;
@@ -31,6 +34,10 @@
     height: 40px;
     cursor: pointer;
 }
+.searchresultsinfo button:hover{
+    background-position: left bottom;
+    /* border: 2.2px solid #000; */
+  }
 .searchresultsdesc{
     width: 67%;
     margin: auto;
@@ -50,7 +57,7 @@
     display: flex;
     flex-direction: column;
     gap:30px;
-    margin-bottom: 60px;
+    margin-bottom: 0px;
 }
 @media only screen and (max-width:1300px){
     .searchresultsdesc{
@@ -103,7 +110,4 @@
     .searchresultsinfo p{
         justify-content: start;
     }
-    .roomcardsdiv{
-        margin-bottom: 0px;
-     }
 }
