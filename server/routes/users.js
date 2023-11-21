@@ -9,6 +9,7 @@ const otpGenerator=require('otp-generator')
 const nodemailer = require('nodemailer');
 
 const otpmodel=require('../pages/otpmodel')
+const facultymodel=require('../pages/facultymodel')
 require("dotenv").config();
 router.get('/test', (req, res) => res.send('book route testing!'));
 var transporter = nodemailer.createTransport({
@@ -18,10 +19,13 @@ var transporter = nodemailer.createTransport({
       pass: 'yfeaofygjkudhifc'
     }
 });
+
+
 router.post('/register',async (req,res)=>{
     const {username,email,password,confirmpassword}=req.body;
     const user =await usersmodel.findOne({username});
     const useronverification=await otpmodel.findOne({username});
+
     if (user || useronverification){
         return res.status(400).json({message:"Username already exists"})
     }
@@ -29,6 +33,14 @@ router.post('/register',async (req,res)=>{
     const isEmailDomainAllowed = (email) => {
         const allowedDomains = ['iitj.ac.in'];
         const domain = email.split('@')[1];
+        const domain1=email.split('@')[0];
+        const dotIndex=domain1.indexOf('.');
+        if(!allowedDomains.includes(domain)){
+            return false;
+        }
+        if(dotIndex===-1 || !/^\d+$/.test(domain1.slice(dotIndex+1))){
+           return false;
+        }
         return allowedDomains.includes(domain);
       };
     if(!isEmailDomainAllowed(email)){
@@ -67,6 +79,7 @@ router.post('/register',async (req,res)=>{
     });
     return res.status(200).json({"Info":{username,password,email}})
 })
+
 router.put('/clearotp',async(req,res)=>{
     const {username,email}=req.body;
     const user =await otpmodel.findOne({email});
@@ -81,7 +94,7 @@ router.post('/resendotp',async(req,res)=>{
     if(user){
         const final=await otpmodel.findByIdAndDelete(user._id);
     }
-    const otp=otpGenerator.generate(5,{
+    const otp=otpGenerator.generate(6,{
         digits:true,lowerCaseAlphabets:false,upperCaseAlphabets:false,specialChars:false
     })
     const hashedotp=await bcrypt.hash(otp,10);
@@ -100,8 +113,9 @@ router.post('/resendotp',async(req,res)=>{
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
         res.render('otp');
     });
-    return res.status(200).json({message:'Resent OTP'});
+    return res.status(200).json({message:'Resent OTP'})
 })
+
 router.post('/verifyotp',async(req,res)=>{
     const {username,password,email,otp}=req.body;
     const user =await otpmodel.findOne({email});
@@ -141,6 +155,72 @@ router.post('/login',async (req,res)=>{
         return res.status(200).json({token})}
     });
 })
+
+// faculty register
+router.post('/facultyregister',async(req,res)=>{
+    const {username,email,password,confirmpassword}=req.body;
+
+    const faculty=await facultymodel.findOne({username});
+    const facultyverification=await otpmodel.findOne({username});
+    if(faculty || facultyverification){
+        return res
+        .status(404)
+        .json({message:"Username already exists"});
+    }
+    
+    const isEmailDomainAllowed=(email)=>{
+        const allowedDomains = ['iitj.ac.in'];
+        const domain=email.split('@')[1];
+        const domain1=email.split('@')[0];
+        const dotIndex=domain1.includes('.');
+        if(!allowedDomains.includes(domain)){
+            return false;
+        }
+        if (!/^[a-zA-Z]+$/.test(domain1)) {
+            return false;
+        }
+        return allowedDomains.includes(domain);
+    };
+    if(!isEmailDomainAllowed(email)){
+        return res.status(400).json({message:"Email domain is not allowed"})
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newFaculty = new facultymodel({ username, email, password: hashedPassword });
+    await newFaculty.save();
+        return res.status(200).json({ message: "Faculty account created successfully" });
+
+})
+
+//faculty login
+router.post('/facultylogin',async(req,res)=>{
+    const {username,password}=req.body;
+    console.log(username);
+    const user=await facultymodel.findOne({username});
+    if(!user){
+        return res
+        .status(400)
+        .json({message:"User Not found"})
+    }
+    const ispasswordvalid=await bcrypt.compare(password,user.password);
+    console.log(password);
+    if(!ispasswordvalid){
+        return res
+        .status(400)
+        .json({message:"password is incorrect"})
+    }
+
+    // const token = jwt.sign({id:user._id},process.env.SECRET_KEY,{ expiresIn: '36000000s'},(err,token)=>{
+    //     if(err){
+    //         throw err;
+    //     }else{
+    //         res.status(200).json({token});
+    //     }
+        
+    // });
+    return res.status(200).json({message:"LOGIN Successfull", userId : user._id})
+})
+
 
 router.post('/adminlogin',async (req,res)=>{
     const {username,password}=req.body;

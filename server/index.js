@@ -6,11 +6,13 @@ const usersRouter = require('./routes/users.js');
 const roomsRouter = require('./routes/rooms.js');
 const bookingsRouter = require('./routes/booking.js');
 const adminbookingsRouter = require('./routes/admibookings.js');
+
 require("dotenv").config();
 app.get('/', (req, res) => res.send('/users ---> for users data, /rooms ---> for rooms data, /bookings ---> bookings page'));
 const corsOptions = {
   origin: "http://localhost:3000"
 }
+
 app.use(express.json());
 app.use(cors());
 app.use('/users', usersRouter);

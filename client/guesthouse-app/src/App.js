@@ -22,7 +22,12 @@ import Facultybookings from './components/Facultybookings';
 import Iitjguesthouseloginregister from './Pages/Iitjguesthouseloginregister';
 import Studentlogin from './Pages/Studentlogin';
 import Gallery from './components/Gallery';
+import Ffacultylogin from './Pages/Ffacultylogin';
+import { useParams } from 'react-router-dom';
+
 function App() {
+  //const { userId } = useParams();
+
   return (
     <Router>
       <Scrolltop />
@@ -30,6 +35,7 @@ function App() {
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/' element={<Iitjguesthouseloginregister />}/>
           <Route path='/student-login' element={<Studentlogin />} />
+          <Route path='/faculty-login' element={<Ffacultylogin />} />
           <Route path='/admin-login' element={<AdminLoginpage />} />
           <Route path="/dashboard/admins" element={<Adminwebsite />}>
               <Route path="/dashboard/admins" element ={<AdminallBookings />}/>
@@ -45,7 +51,7 @@ function App() {
           </Route>
           <Route path='/Bookings' element={<Bookings />} />
           <Route path='/faculty'  element={<Facultyinterface />}>
-            <Route path="/faculty/" element={<Facultyform />} />
+            <Route path="/faculty/" element={<Facultyform/>} />
             <Route path='/faculty/bookings' element={<Facultybookings />} />
           </Route>
         </Routes>

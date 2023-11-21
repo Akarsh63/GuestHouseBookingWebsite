@@ -4,6 +4,8 @@ import './avibility.css'
 import 'antd/dist/reset.css';
 import { DatePicker, Space } from 'antd';
 const { RangePicker } = DatePicker;
+
+
 export default function Checkavaibility() {
     const [inp,setinp]=useState(false);
     const [checkin,setcheckin]=useState('');
@@ -81,10 +83,10 @@ export default function Checkavaibility() {
           setinp(false);
         }
       };
-    
+
       handleResize();
       window.addEventListener('resize', handleResize);
-    
+      
       return () => {
         window.removeEventListener('resize', handleResize);
       };

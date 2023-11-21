@@ -1,9 +1,14 @@
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  padding: 11.5px 14px !important;
+}
+
 @media only screen and (max-width:930px){
   .page2{
     gap:30px !important;
     justify-content: center !important;
   }
 }
+
 @media only screen and (max-width:600px){
     .mainbox{
         padding: 50px 20px !important;
@@ -11,7 +16,7 @@
    
   }
   
-  @media only screen and (max-width:400px){
+@media only screen and (max-width:400px){
   .textfeild{
     width: 270px !important;
 }
@@ -33,6 +38,7 @@
     overflow: hidden !important;
   }
 }
+
 @media only screen and (max-width:330px){
     .css-1hv8oq8-MuiStepLabel-label.Mui-active{
         text-align: center !important;
