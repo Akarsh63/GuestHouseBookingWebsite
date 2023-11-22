@@ -22,6 +22,7 @@ export default function FacultiesLogin({setfacultyLogin}) {
     const { name, value } = event.target;
     setLogninfo({ ...logininfo, [name]: value });
   };
+
   const  onsubmit= async (e)=>{
     e.preventDefault();
     console.log('22');
@@ -36,7 +37,8 @@ export default function FacultiesLogin({setfacultyLogin}) {
     if (user1.data.userId) {
       const userId = user1.data.userId; // Extract userId from the response data
       setCookie('userid',userId)
-      navigate(`/faculty`);
+      navigate('/facultyHomaPage')
+      // navigate(`/faculty`);
      
     } else {
       // Handle the case where userId is not available in the response data

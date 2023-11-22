@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './query.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion';
 
 
 export default function Query() {
@@ -25,10 +27,32 @@ export default function Query() {
     // toast.success('Query sent')
   }
 
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: true, 
+    threshold: 0, 
+  });
+
+  useEffect(() => {
+    console.log(inView)
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        y: 0,
+      });
+    }
+  }, [controls, inView]);
+
   return (
+    <motion.div className='homecomp4'
+      ref={ref}
+      initial={{ opacity: 0, y: 100 }}
+      animate={controls}
+      transition={{ duration: 1 }}
+    >
     <div className='query-form-container'>
         <div className='query-form'>
-            <h2 className='aboutushead'>Get in Touch!</h2>
+            <h2 className='aboutushead' style={{color:"rgb(0,0,0)"}}>Get in <span style={{color:"rgb(255,0,0)"}}>Touch!</span></h2>
             <form action="https://formspree.io/f/xyyqgpeq" method="POST" className='query-input-container'>
                 <div className='query-input'>
                     <input type='text' name="first-name" id="first-name" autoComplete='off' placeholder='Enter your Username' required/>
@@ -45,6 +69,7 @@ export default function Query() {
             </form>
         </div>
         <div className='map-container'>
+          
           <div class="mapouter"><div class="gmap_canvas"><iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=iit jodhpur&t=&z=13&ie=UTF8&iwloc=&output=embed" style={{ frameborder: "0", scrolling: "no", marginheight: "0", marginwidth: "0" }}></iframe><a href="https://2yu.co">2yu</a><br /><a href="https://embedgooglemap.2yu.co/">html embed google map</a></div></div>
         </div>
         <ToastContainer
@@ -60,6 +85,6 @@ export default function Query() {
           theme="light"
         />
     </div>
-        
+    </motion.div>
   )
 }

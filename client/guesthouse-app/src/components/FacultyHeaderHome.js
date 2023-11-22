@@ -8,7 +8,8 @@ import { useCookies } from 'react-cookie';
 import { FiLogOut } from "react-icons/fi";
 import axios from 'axios'
 
-export default function Header() {
+export default function FacultyHeaderHome() {
+
 
   const navigate = useNavigate();
   const [shownav, setshownav] = useState(false);
@@ -23,18 +24,6 @@ export default function Header() {
     navigate('/')
   }
 
-  useEffect(() => {
-    const GetData = async() => {
-      const res = await axios.get('http://localhost:8082/users/data', {
-        headers: {
-          'x-token': cookies.access_token
-        }
-      })
-      console.log(res.data.user.email)
-      setData(res.data.user)
-    }
-    GetData()
-  }, [])
 
   const backgroundchange = () => {
     if (window.innerWidth >= 768) {
@@ -85,7 +74,7 @@ export default function Header() {
               <li><ScrollLink to="about" className='headerlinks' onClick={() => { setshownav(!shownav) }}>About Us</ScrollLink></li>
               <li><ScrollLink to="gallery" className='headerlinks' onClick={() => { setshownav(!shownav) }}>Gallery</ScrollLink></li>
               <li><ScrollLink to="contact" className="headerlinks" onClick={() => { setshownav(!shownav) }}>Contact Us</ScrollLink></li>
-              <li><Link to='/booknow' className='headerlinks' onClick={() => { setshownav(!shownav) }}>Bookings</Link></li>
+              <li><Link className='headerlinks' onClick={() => { setshownav(!shownav) }}>Bookings</Link></li>
 
               {/* <li><Link to="#" className="headerlinks" >Profile</Link></li> */}
               <li ><button style={{ fontWeight: 500 }} onClick={logout}>Logout</button></li>
@@ -99,7 +88,7 @@ export default function Header() {
             <li><ScrollLink to="gallery" className='header_links' spy={true} smooth={true} offset={-headerHeight}>Gallery</ScrollLink></li>
             <li><ScrollLink to="availability" className='header_links' spy={true} smooth={true} offset={-headerHeight}>Availability</ScrollLink></li>
             <li><ScrollLink to="contact" className='header_links' spy={true} smooth={true} offset={-headerHeight}>Contact Us</ScrollLink></li>
-            <li><Link to='/booknow' className='header_links'>Bookings</Link></li>
+            <li><Link className='header_links'>Bookings</Link></li>
             <li><button onClick={logout}>Logout<FiLogOut style={{ marginLeft: '8px' }} /></button></li>
           </ul>
         </div>

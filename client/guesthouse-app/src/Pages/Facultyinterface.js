@@ -4,6 +4,7 @@ import Facultyform from '../components/Facultyform';
 import Facultybookings from '../components/Facultybookings';
 import { Routes, Route } from 'react-router-dom';
 import { Box } from '@mui/material';
+import FacultyHomePage from './FacultyHomePage';
 
 export default function Facultyinterface() {
   return (

@@ -1,9 +1,17 @@
+.homecomp4{
+  background: linear-gradient(to right,#FDFBF7 65%, rgb(255,96,96) 65%);
+  padding-top:55px;
+  padding-bottom: 55px;
+  /* background: url('https://www.hindustantimes.com/ht-img/img/2023/10/04/1600x900/iit_jodhpur_1696406267782_1696406754119.jpeg') no-repeat; */
+}
 .query-form-container {
     width: 80%;
     margin: auto;
     display: flex;
     flex-direction: row;
     gap:20px;
+    /* background-color: #FDFBF7; */
+    /* margin-bottom:65px; */
     padding-top: 80px;
   }
   .query-form{
@@ -20,30 +28,38 @@
     width: 100%;
      padding: 12px;
      border: none;
-     border-bottom: 1px solid #1e1e1e;
+     border-bottom: 1px solid #000;
      transition:border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
      outline: none;
+     background-color: transparent;
   }
   .query-input textarea{
     padding: 12px;
     width: 100%;
     border: none;
+    border-bottom: 1px solid #000;
+    outline: none;
+    transition:border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    background-color: transparent;
     border-bottom: 1px solid #1e1e1e;
     outline: none;
     transition:border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   }
   .query-btn input{
-    color: #fff;
-    background-color: #f77a42;
+    color: #000;
+    background-color: transparent;
     outline: none;
+    border: 1px solid #000;
     padding: 12px 25px;
     font-size: 20px;
-    border: none;
+    font-weight: 450;
     cursor: pointer;
+    transition: background-color ease-in-out 0.35s,color ease-in-out 0.35s;
     border-radius: 5px;
   }
   .query-btn input:hover{
-    background-color: #f66524;
+    background-color: #000;
+    color: #fff;
   }
   .map-container{
     width: 50%;
@@ -53,14 +69,17 @@
   }
   .mapouter {
     text-align:right;
-    height:80%;
-    width:80%;
+    height:100%;
+    width:100%;
   }
 
   .gmap_canvas {overflow:hidden;background:none!important;height:100%;width:100%;}
   iframe{
     border-right:1px solid #999;
     border-bottom:1px solid #999;
+  }
+  .map-container{
+    background-color: #333;
   }
   @media screen and (max-width:1286px){
     .query-form-container{
@@ -76,6 +95,11 @@
       .query-form-container{
           width: 86%;
           flex-direction: column;
+          padding-top: 15px;
+      }
+      .homecomp4{
+        background: #FDFBF7;
+        padding-bottom: 0;
       }
       .query-form{
         width: 100%;
@@ -93,8 +117,21 @@
         }
         .query-form-container{
           width: 90%;
+          margin-bottom: 0%;
       }
       .query-input-container{
         margin-top: 16px;
+      }
+      .homecomp4{
+        padding-top: 0px;
+      }
+      .query-btn input{
+        color: #fff;
+        background-color: #000;
+        padding: 10px 25px;
+        width: 100%;
+        font-size: 18px;
+        font-weight: 350;
+        cursor: pointer;
       }
         }

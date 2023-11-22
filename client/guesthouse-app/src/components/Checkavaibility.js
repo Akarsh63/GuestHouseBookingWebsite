@@ -66,7 +66,7 @@ export default function Checkavaibility() {
     const rangePickerStyles = {
       height:'50px',
       width: '100%',
-      borderRadius: '5px',
+      // borderRadius: '5px',
       borderColor:'transparent',
     };
     const calendarStyles = {

@@ -1,11 +1,11 @@
 .container_book{
     width: 86%;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     gap:40px;
-    margin-bottom: 90px;
+    margin-bottom:0px;
 }
 .avaibility{
     font-size: 25px;
@@ -13,12 +13,18 @@
 .date_submit_button{
     background-color: #025464;
     color: #fff;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     font-size: 18px;
     outline: none;
-    border: none;
+    border: 1px solid transparent;
     width: 120px;
     cursor: pointer;
+    transition: 0.2s all ease-in;
+}
+.date_submit_button:hover{
+   background-color: transparent;
+   color: #000;
+   border-color: #000;
 }
 .form_available{
     display: flex;
@@ -51,7 +57,7 @@
         border: none;
     }
     .container_book{
-        gap:35px
+        gap:20px
     }
     .form_available{
         flex-direction:column;
@@ -64,17 +70,13 @@
     }
 }
 @media only screen and (max-width:470px){
-    .container_book{
-        margin-bottom:50px;
-    }
       .ant div{
         gap:15px
       }
 }
 @media only screen and (max-width:400px){
     .container_book{
-        gap:25px;
-        margin-bottom: 10px;
+        gap:0px;
     }
     .ant-picker-suffix,.anticon{
         display: none;

@@ -1,5 +1,6 @@
 .footert{
-    background-color: #333333;
+    /* background-color: #e5e5e5; */
+    background:url('https://mftgroup.com.ph/wp-content/uploads/2018/02/footer-background-image.jpg') no-repeat center;
 }
 .footert ul{
     padding-left: 0;
@@ -8,7 +9,7 @@
     display: flex;
     flex-direction: row;
     color: #bcb4b4;
-    padding:35px 120px 15px;
+    padding:25px 120px 15px;
     justify-content: space-between;
 }
 .footn,.heading_footer{
@@ -44,7 +45,7 @@
     font-size: 20px;
 }
 .footer_about{
-    padding:40px 120px 10px;
+    padding:25px 120px 10px;
     display: flex;
 }
 .logof{
@@ -61,6 +62,12 @@
     margin-right: 6px;
   }
 @media only screen and (max-width:568px){
+    .footert {
+        background: url('https://mftgroup.com.ph/wp-content/uploads/2018/02/footer-background-image.jpg') no-repeat center;
+        background-size: cover;
+        /* Add any other styles you need */
+    }
+    
     .footer{
         flex-direction: column;
         padding:40px 30px 50px;

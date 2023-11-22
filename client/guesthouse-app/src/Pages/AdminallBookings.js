@@ -37,10 +37,10 @@ const AdminallBookings=(() =>{
 
     console.log(window.location.href)
     return (
-      <Box sx={{marginTop: '65px', marginLeft: '200px'}}>
-        <Grid container sx={{display: 'flex', flexDirection: 'row', position: 'fixed', zIndex: '999', gap:'20px', m: '5px 50px'}} >
-          <Button variant='contained' onClick={(e) => setChange(false)}>Students</Button>
-          <Button variant='contained' onClick={(e) => setChange(true)}>Faculty</Button>
+      <Box sx={{paddingTop: '120px',width:'90%',margin:'auto'}}>
+        <Grid container sx={{display: 'flex', flexDirection: 'row', gap:'20px'}} >
+          <Button variant='contained' onClick={(e) => setChange(false)} style={{backgroundColor:'#1c58d9'}}>Students</Button>
+          <Button variant='contained' onClick={(e) => setChange(true)} style={{backgroundColor:'#1c58d9'}}>Faculty</Button>
         </Grid>
         {
           change ? (

@@ -7,9 +7,13 @@ import './registration.css'
 import TextField from '@mui/material/TextField';
 import { Typography } from '@mui/material';
 import {motion} from 'framer-motion'
+import { IoIosEye } from "react-icons/io";
+import { IoIosEyeOff } from "react-icons/io";
 
 export default function Loginpage({setStudentlogin}) {
   const [_, setCookies] = useCookies(["access_token"]);
+  const [viewPassword, setViewPassword] = useState(false);
+
    const [logininfo,setLogninfo]=useState({
      username:'',
      password:'',
@@ -33,6 +37,10 @@ export default function Loginpage({setStudentlogin}) {
         alert(err.response.data.message)
     }
   }
+
+  const handlePassword = () => {
+    setViewPassword(!viewPassword)
+  }
   return (
             <motion.div className="container"
               initial={{scale: 0}}
@@ -46,7 +54,8 @@ export default function Loginpage({setStudentlogin}) {
                                 <TextField sx={{width:'100%',}} id="outlined-basic" label="Username Or EmailID" variant="outlined" value={logininfo.username} onChange={handlechange} autoComplete='off' required placeholder='Username' name='username' className="input_res"/>
                             </div>
                             <div className="form-group">
-                                 <TextField sx={{width:'100%'}} id="outlined-basic" label="Password" variant="outlined" value={logininfo.password} onChange={handlechange} type='password' placeholder='Password' name='password' className="input_res" autoComplete='off' required/>
+                                 <TextField sx={{width:'100%'}} id="outlined-basic" label="Password" variant="outlined" value={logininfo.password} onChange={handlechange} type={viewPassword ? 'text' : 'password'} placeholder='Password' name='password' className="input_res" autoComplete='off' required/>
+                                 <div className='passwordManager' onClick={handlePassword}>{viewPassword ? <IoIosEyeOff /> : <IoIosEye />}</div>
                             </div>
                             <div>
                               <Link className='forgotpassword'>Forgot your password?</Link>
@@ -56,7 +65,7 @@ export default function Loginpage({setStudentlogin}) {
                             </div>
                         </form>
                         <Typography sx={{textAlign:'center',color:'grey'}}>
-                        Don't have an Account?<Link to='#' className="signup-link" onClick={()=>{setStudentlogin(1)}}>Create an account</Link>
+                          Don't have an Account?<Link to='#' className="signup-link" onClick={()=>{setStudentlogin(1)}}>Create an account</Link>
                         </Typography>
                     </div>
             </motion.div>

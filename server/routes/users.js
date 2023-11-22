@@ -11,6 +11,23 @@ const nodemailer = require('nodemailer');
 const otpmodel=require('../pages/otpmodel')
 const facultymodel=require('../pages/facultymodel')
 require("dotenv").config();
+
+
+router.get('/data', middleware, async(req, res) => {
+    let exist = req.userid;
+    try{
+        if(exist) {
+            let user = await usersmodel.findOne({ _id : exist })
+            if(user) {
+                console.log(user)
+                res.status(200).json({user})
+            } 
+        }
+    } catch(error) {
+        res.status(500).json({message: error})
+    }
+} )
+
 router.get('/test', (req, res) => res.send('book route testing!'));
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -210,14 +227,6 @@ router.post('/facultylogin',async(req,res)=>{
         .json({message:"password is incorrect"})
     }
 
-    // const token = jwt.sign({id:user._id},process.env.SECRET_KEY,{ expiresIn: '36000000s'},(err,token)=>{
-    //     if(err){
-    //         throw err;
-    //     }else{
-    //         res.status(200).json({token});
-    //     }
-        
-    // });
     return res.status(200).json({message:"LOGIN Successfull", userId : user._id})
 })
 
@@ -263,15 +272,6 @@ router.post('/newadmin',middleware,async (req,res)=>{
     }
    
 });
-// router.get('/home/:userId',async (req,res)=>{
-//     console.log(req.params.userId)
-//     const user =await usersmodel.findById(req.params.userId);
-//     if (!user){
-//        return res
-//            .status(400)
-//            .json({message:"No Existing Users Found!"})
-//     }
-//     res.status(200).json(user.username)
-// })
+
 
 module.exports=router;

@@ -2,9 +2,14 @@ import React from 'react';
 import './footer.css';
 import Logo from '../images/logo.jpg';
 import {Link} from 'react-router-dom';
+import {motion} from 'framer-motion'
 export default function Footer() {
   return (
-    <div className='footert'>
+    <motion.div className='footert'
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{duration: 1, delay: 1}}
+    >
       <div class='footer_about'>
             <img class="logof" src={Logo} alt="MAMPG Logo"/>
             <h1 class='footn'>IIT JODHPUR</h1>
@@ -42,7 +47,7 @@ export default function Footer() {
                 </ul>
             </div>
         </div>
-    </div>
+    </motion.div>
     
   )
 }
