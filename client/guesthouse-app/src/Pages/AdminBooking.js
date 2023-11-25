@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Newbook = () => {
     const navigate = useNavigate();
     const [cookies] = useCookies(['admin_access_token']);
-    useEffect(()=>{if(!cookies.admin_access_token){navigate('/adminlogin')}})
+    useEffect(()=>{if(!cookies.admin_access_token){navigate('/admin-login')}})
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");

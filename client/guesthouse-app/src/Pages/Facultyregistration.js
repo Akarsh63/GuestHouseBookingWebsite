@@ -8,7 +8,7 @@ import { FaUser,FaLock } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
 import { MuiOtpInput } from 'mui-one-time-password-input'
 import {  Button, Grid, TextField, Typography } from '@mui/material';
-export default function Registrationpage({setStudentlogin}) {
+export default function Facultyregistration({setfacultyLogin}) {
   const [page,setpage]=useState(0);
   const [otp, setOtp] =useState('');
   const [resendDisabled, setResendDisabled] = useState(true);
@@ -50,6 +50,7 @@ export default function Registrationpage({setStudentlogin}) {
     event.preventDefault();
     try{
       const {username,email}=Registrationinfo;
+      
       const user = await axios.put('http://localhost:8082/users/clearotp',{username,email});
       console.log(user.data.Info)
     }
@@ -79,11 +80,15 @@ export default function Registrationpage({setStudentlogin}) {
     event.preventDefault();
     try{
       const {username,email,password,confirmpassword}=Registrationinfo;
-      const user = await axios.post('http://localhost:8082/users/register',{username,email,password,confirmpassword});
+      console.log(Registrationinfo);
+      const user = await axios.post('http://localhost:8082/users/facultyregister',{username,email,password,confirmpassword});
       console.log(user)
-      setpage(1);
-      setTimer(60);
-      setResendDisabled(true);
+      alert(user.data.message)
+      // setpage(1);
+      // setTimer(60);
+      // setResendDisabled(true);
+      // navigate('/')
+      setfacultyLogin(0)
     }
     catch(err){
         alert(err.response.data.message)
@@ -91,12 +96,14 @@ export default function Registrationpage({setStudentlogin}) {
   }
   const handleComplete=async (event)=>{
     event.preventDefault();
+    
     try{
       const {username,email,password}=Registrationinfo;
+
       const user = await axios.post('http://localhost:8082/users/verifyotp',{username,email,password,otp});
       console.log(user.data.Info)
       alert('User Created Successfully!')
-      setStudentlogin(0)
+      navigate('/')
     }
     catch(err){
         alert(err.response.data.message)
@@ -130,7 +137,7 @@ export default function Registrationpage({setStudentlogin}) {
       Enter OTP sent to <span style={{ fontWeight: 'bold',color:'#1c58d9' }}>{Registrationinfo.email}</span>
     </Typography>
     <MuiOtpInput
-      length={6}
+      length={5}
       value={otp}
       onChange={handleotpChange}
       autoFocus
@@ -182,10 +189,10 @@ export default function Registrationpage({setStudentlogin}) {
   return (
             <div class="container otpform">
                     <div class="signup-form">
-                        <h2 class="form-title reg-title">IIT JODHPUR STUDENT REGISTRATION</h2>
+                        <h2 class="form-title reg-title">IIT JODHPUR FACULTY REGISTRATION</h2>
                       {reggetform()}
                        <Typography sx={{textAlign:'center',color:'grey !important'}}>
-                        Already have an Account?<Link to='#' className="signin-link" onClick={()=>{setStudentlogin(0)}}>Login</Link>
+                        Already have an Account?<Link to='#' className="signin-link" onClick={()=>{setfacultyLogin(0)}}>Login</Link>
                         </Typography>
                     </div>
             </div> 

@@ -13,7 +13,7 @@ import Adminwebsite from './Pages/Adminwebsite';
 import AdminallBookings from './Pages/AdminallBookings';
 import Scrolltop from './components/Scrolltop';
 import Detail from './Pages/Adminpagedetails';
-
+import FacultyHomepage from './Pages/FacultyHomepage';
 import Roomd from './Pages/Adminnewroom';
 import Newbook from './Pages/AdminBooking';
 import Facultyinterface from './Pages/Facultyinterface';
@@ -21,6 +21,7 @@ import Facultyform from './components/Facultyform';
 import Facultybookings from './components/Facultybookings';
 import Iitjguesthouseloginregister from './Pages/Iitjguesthouseloginregister';
 import Studentlogin from './Pages/Studentlogin';
+import Facultylogin from './Pages/Facultylogin';
 function App() {
   return (
     <Router>
@@ -28,6 +29,7 @@ function App() {
        <Routes>
           <Route path='/' element={<Iitjguesthouseloginregister />}/>
           <Route path='/student-login' element={<Studentlogin />} />
+          <Route path='/faculty-login' element={<Facultylogin />} />
           <Route path='/admin-login' element={<AdminLoginpage />} />
           <Route path="/dashboard/admins" element={<Adminwebsite />}>
               <Route path="/dashboard/admins" element ={<AdminallBookings />}/>
@@ -42,10 +44,8 @@ function App() {
             <Route path='/booknow/bookingpage' element={<Formsumission />} />
           </Route>
           <Route path='/Bookings' element={<Bookings />} />
-          <Route path='/faculty'  element={<Facultyinterface />}>
-            <Route path="/faculty/" element={<Facultyform />} />
-            <Route path='/faculty/bookings' element={<Facultybookings />} />
-          </Route>
+          <Route path='/facultyHomaPage' element={<FacultyHomepage />} />
+          <Route path='/facultybookings' element={<Facultybookings />} />
         </Routes>
     </Router>
   );

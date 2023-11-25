@@ -4,6 +4,10 @@ const otpschema=new mongoose.Schema({
         type:String,
         required:true
     },
+    role:{
+        type:String,
+        required:true
+    },
     email:{
         type:String,
         required:true
@@ -12,7 +16,7 @@ const otpschema=new mongoose.Schema({
         type:String,
         required:true
     },
-    createdAt:{type:Date,default:Date.now,index:{expires:300}}
+    createdAt:{type:Date,default:Date.now,index:{expires:700}}
 })
 
 module.exports=otpmodel=mongoose.model('otpmodel', otpschema)

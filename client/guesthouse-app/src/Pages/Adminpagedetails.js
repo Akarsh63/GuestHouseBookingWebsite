@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Detail =(() =>{ 
     const navigate = useNavigate();
     const [cookies] = useCookies(['admin_access_token']);
-    useEffect(()=>{if(!cookies.admin_access_token){navigate('/adminlogin')}})
+    useEffect(()=>{if(!cookies.admin_access_token){navigate('/admin-login')}})
     const [booking,setbooking]=useState([]);
     useEffect(()=>{
         const getting=async()=>{
@@ -17,6 +17,7 @@ const Detail =(() =>{
                     }
                   })
                 setbooking(response.data.Bookings);
+                console.log(booking)
               }
             catch(error) {
                 console.log(error);

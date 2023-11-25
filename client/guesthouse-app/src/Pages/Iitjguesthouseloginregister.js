@@ -24,7 +24,9 @@ alert('fill all')
     else if (loginType===3){
       navigate('/student-login')
     }
-    
+    else if(loginType===2){
+      navigate('/faculty-login')
+    }
   }
   return (
     <Box

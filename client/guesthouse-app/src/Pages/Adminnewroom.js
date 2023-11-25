@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Roomd = () => {
     const navigate = useNavigate();
     const [cookies] = useCookies(['admin_access_token']);
-    useEffect(()=>{if(!cookies.admin_access_token){navigate('/adminlogin')}})
+    useEffect(()=>{if(!cookies.admin_access_token){navigate('/admin-login')}})
   const [selectoption, setselectoption] = useState("");
   const [inputvalue, setinputvalue] = useState("");
   const [needadmin, setneedadmin] = useState("");
@@ -80,15 +80,16 @@ const Roomd = () => {
   return (
     <div className="mainss">
         <div>
+            
+            <div className="extra">
+            <form onSubmit={submitform} className="susform">
             <div className='newroomadmin'>
                 ADD A ROOM
             </div>
-            <div className="extra">
-            <form onSubmit={submitform} className="susform">
             <div className="newroom">
                 <label className="forming" for="roomnumber">
                     Room Number: </label>
-                    <input className="r" type="text" value={selectoption} onChange={handlesubmitvalue} id="roomnumber" />
+                    <input className="r" type="text" value={selectoption} onChange={handlesubmitvalue} id="roomnumber" placeholder='Ex: 202'/>
                 </div>
                 <label className="forming">Room Type: </label>
                 <div className='radiobtns'> 
@@ -119,22 +120,23 @@ const Roomd = () => {
 
         </div>
         <div>
+            
+            <div className="extra extras">
+            <form onSubmit={submitaform} className="susform">
             <div className='newroomadmin'>
                 ADD AN ADMIN
             </div>
-            <div className="extra extras">
-            <form onSubmit={submitaform} className="susform">
             <div className='newroom'>
             <label className="forming" for="adminname">
-                Admin:
+                Admin Username:
                 </label>
-                <input className="r" type="text" value={needadmin} onChange={handlevalue} id="adminname" />
+                <input className="r" type="text" value={needadmin} onChange={handlevalue} id="adminname" placeholder='John'/>
             </div>
             <div className='newroom'>
             <label className="forming" for='adminpass'>
                 Password:
                 </label>
-                <input className="r" type="text" value={newpass} onChange={handlevaluesubmit} id='adminpass' />
+                <input className="r" type="text" value={newpass} onChange={handlevaluesubmit} id='adminpass' placeholder='John@123' />
             </div>
             <div className='rrrbut '>
                 <button className="rrr sub" type="submit">Submit</button>

@@ -16,8 +16,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
 import { Route,Routes} from 'react-router-dom'
 import AdminallBookings from './AdminallBookings'
 import Detail from './Adminpagedetails'
@@ -72,6 +73,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+  const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(['admin_access_token']);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -82,11 +85,15 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const adminlogout = async(e)=>{
+    e.preventDefault();
+    removeCookie('admin_access_token');
+    navigate('/')
+  }
   return (
     <Box sx={{ display: 'flex',backgroundColor:'#f7f7f7;' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} style={{backgroundColor:'#1c58d9'}}>
+      <AppBar position="fixed" open={open} style={{backgroundColor:'#696cff'}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -98,7 +105,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            IIT JODHPUR
+            IIT JODHPUR DASHBOARD
           </Typography>
         </Toolbar>
       </AppBar>
@@ -122,30 +129,34 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <ListItem disablePadding>
+            <ListItemButton component={Link} to="">
+              <ListItemText primary={'All Bookings'} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component={Link} to="details">
+              <ListItemText primary={'Booking Details'} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component={Link} to="newbooking">
+              <ListItemText primary={'Room Booking'} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component={Link} to="rooms">
+              <ListItemText primary={'Add a room'} />
+            </ListItemButton>
+          </ListItem>
         </List>
+
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+        <ListItem disablePadding>
+              <ListItemButton onClick={adminlogout}>
+                <ListItemText primary={'Logout'} />
               </ListItemButton>
             </ListItem>
-          ))}
-        </List>
       </Drawer>
       <Main open={open} style={{padding:'0'}}>
             <Routes>

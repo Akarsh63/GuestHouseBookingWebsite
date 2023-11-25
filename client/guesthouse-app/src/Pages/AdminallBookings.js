@@ -12,8 +12,9 @@ import { Button } from '@mui/material';
 const AdminallBookings=(() =>{ 
     const navigate = useNavigate();
     const [cookies] = useCookies(['admin_access_token']);
-    useEffect(()=>{if(!cookies.admin_access_token){navigate('/adminlogin')}})
-    const [booking,setbooking]=useState([]);
+    useEffect(()=>{if(!cookies.admin_access_token){navigate('/admin-login')}})
+    const [studentbooking,setstudentbooking]=useState([]);
+    const [facultybookings,setfacultybookings]=useState([]);
     const [refresh,setrefresh]=useState(false);
     const [change, setChange] = useState(false);
     console.log(change)
@@ -27,7 +28,8 @@ const AdminallBookings=(() =>{
                       'x-token': cookies.admin_access_token
                     }
                   })
-                setbooking(response.data.Bookings);
+                setstudentbooking(response.data.Studentbookings);
+                setfacultybookings(response.data.Facultybookings)
               }
             catch(error) {
                 console.log(error);
@@ -39,14 +41,14 @@ const AdminallBookings=(() =>{
     return (
       <Box sx={{paddingTop: '120px',width:'90%',margin:'auto'}}>
         <Grid container sx={{display: 'flex', flexDirection: 'row', gap:'20px'}} >
-          <Button variant='contained' onClick={(e) => setChange(false)} style={{backgroundColor:'#1c58d9'}}>Students</Button>
-          <Button variant='contained' onClick={(e) => setChange(true)} style={{backgroundColor:'#1c58d9'}}>Faculty</Button>
+          <Button variant='contained' onClick={(e) => setChange(false)} style={{backgroundColor:'#696cff'}}>Students</Button>
+          <Button variant='contained' onClick={(e) => setChange(true)} style={{backgroundColor:'#696cff'}}>Faculty</Button>
         </Grid>
         {
           change ? (
-            <Table booking={booking} setrefresh={setrefresh} />
+            <Table booking={facultybookings} setrefresh={setrefresh} />
           ) : (
-            <Table booking={booking} setrefresh={setrefresh} />
+            <Table booking={studentbooking} setrefresh={setrefresh} />
           )
         }
       </Box>
