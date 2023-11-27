@@ -37,7 +37,6 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-
 router.post('/register',async (req,res)=>{
     const {username,email,password,confirmpassword}=req.body;
     const user =await usersmodel.findOne({username});
@@ -203,8 +202,46 @@ router.post('/facultyregister',async(req,res)=>{
     }
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Create a new faculty account
     const newFaculty = new facultymodel({ username, email, password: hashedPassword });
     await newFaculty.save();
+    // const facultywithemail =await facultymodel.findOne({email});
+    // const facultyonverificationwithemail=await otpmodel.findOne({email});
+    // if (facultywithemail || facultyonverificationwithemail){
+    //     return res.status(400).json({message:"Email already exists"})
+    // }
+    // if(password!=confirmpassword){
+    //     return res.status(400).json({message:"Passwords doesn't match"})
+    // }
+    // const otp=otpGenerator.generate(6,{
+    //     digits:true,lowerCaseAlphabets:false,upperCaseAlphabets:false,specialChars:false
+    // })
+    // const hashedotp=await bcrypt.hash(otp,10);
+    // const newotp =new otpmodel({username,email,'otp':hashedotp});
+    // await newotp.save();
+    // var mailOptions={
+    //     to:email,
+    //     subject:'Otp for registration is:',
+    //     html:"<h1>The Otp for Registration is </h1>"+"<h3 style=font-weight:bold;>"+ otp +"</h3>"
+    // }
+    // transporter.sendMail(mailOptions,(error,info)=>{
+    //     transporter.sendMail(mailOptions, (error, info) => {
+    //         if (error) {
+    //             return console.log(error);
+    //         }
+    //         console.log('Message sent: %s', info.messageId);   
+    //         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    //         res.render('otp');
+    //     });
+       // return res.status(200).json({"Info":{username,password,email}})
+   //})
+    // const hashedPassword = await bcrypt.hash(password, 10);
+
+    //     // Create a new faculty account
+    //     const newFaculty = new facultymodel({ username, email, password: hashedPassword });
+    //     await newFaculty.save();
+
+        // Redirect to the faculty login page
         return res.status(200).json({ message: "Faculty account created successfully" });
 
 })
@@ -226,8 +263,15 @@ router.post('/facultylogin',async(req,res)=>{
         .status(400)
         .json({message:"password is incorrect"})
     }
-
-    return res.status(200).json({message:"LOGIN Successfull", userId : user._id})
+    // const token = jwt.sign({id:user._id},process.env.SECRET_KEY,{ expiresIn: '36000000s'},(err,token)=>{
+    //     if(err){
+    //         throw err;
+    //     }else{
+    //         res.status(200).json({token});
+    //     }
+        
+    // });
+    return res.status(200).json({message:"LOGIN Successfull",userId:user._id})
 })
 
 

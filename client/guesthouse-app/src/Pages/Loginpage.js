@@ -43,9 +43,7 @@ export default function Loginpage({setStudentlogin}) {
   }
   return (
             <motion.div className="container"
-              initial={{scale: 0}}
-              animate={{scale: 1}}
-              transition={{duration: 0.5}}
+              
             >
                     <div className="signin-form">
                         <h2 className="form-title">IIT JODHPUR STUDENT LOGIN</h2>

@@ -22,7 +22,6 @@ export default function FacultiesLogin({setfacultyLogin}) {
     const { name, value } = event.target;
     setLogninfo({ ...logininfo, [name]: value });
   };
-
   const  onsubmit= async (e)=>{
     e.preventDefault();
     console.log('22');

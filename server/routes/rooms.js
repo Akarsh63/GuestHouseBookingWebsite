@@ -24,6 +24,7 @@ router.post('/enter',middleware,async (req,res)=>{
 })
 
 router.get('/allrooms',async (req,res)=>{
+  console.log('Incoming request:', req.method, req.url,req.body);
     try {
       // let exist=await usersmodel.findById(req.userid);
       // if(!exist){

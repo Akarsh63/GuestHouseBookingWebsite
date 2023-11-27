@@ -4,7 +4,7 @@ import FacultiesLogin from './facultiesLogin';
 import Ffacultyregistration from './Ffacultyregistration';
 
 export default function Ffacultylogin() {
-    const [facultyLogin,setfacultyLogin]=useState(0);
+  const [facultyLogin,setfacultyLogin]=useState(0);
   const renderLoginform = (loginPage) => {
     switch (loginPage) {
         case 0:
