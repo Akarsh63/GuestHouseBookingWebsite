@@ -17,7 +17,11 @@ const userschema=new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         // required: true,
         ref: "bookingsmodel"
-    }]
+    }],
+    "role":{
+        type:String,
+        default:'student'
+    }
 })
 
 module.exports=usersmodel=mongoose.model('usersmodel', userschema)

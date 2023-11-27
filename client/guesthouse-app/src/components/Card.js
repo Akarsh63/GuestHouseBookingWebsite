@@ -149,16 +149,19 @@ const Card = ({ booking }) => {
             ))}
              </div>
           <div className="table2">
-            <DatePicker selected={checkin} format="DD-MM-YYYY" onChange={(date) => setCheckin(date)} className='datepicker' placeholderText='Check-in'/>
-            <DatePicker selected={checkout} format="DD-MM-YYYY" onChange={(date) => setCheckout(date)} className='datepicker' placeholderText='Check-out'/>
-            <button onClick={handleSearchRooms} className="bu">
-              Search
-            </button>
+            <div className='datespickers'>
+              <DatePicker selected={checkin} format="DD-MM-YYYY" onChange={(date) => setCheckin(date)} className='datepicker' placeholderText='Check-in'/>
+              <DatePicker selected={checkout} format="DD-MM-YYYY" onChange={(date) => setCheckout(date)} className='datepicker' placeholderText='Check-out'/>
+              <button onClick={handleSearchRooms} className="bu">
+                Search
+              </button>
+            </div>
             <MUIDataTable
               title="Available Rooms"
               data={data}
               options={options}
               columns={columns}
+              className="MUITABLE"
             />
           </div>
 

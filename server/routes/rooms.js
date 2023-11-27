@@ -2,14 +2,16 @@ const express = require('express');
 const router = express.Router();
 const roommodel=require('../pages/roommodel');
 const usersmodel = require('../pages/usersmodel');
+const facultymodel=require('../pages/facultymodel')
 const middleware=require('../middleware')
 const adminmodel = require('../pages/adminmodel');
 
 router.get('/', (req, res) => res.send('book route testing!'));
 router.post('/enter',middleware,async (req,res)=>{
   let exist=await adminmodel.findById(req.userid);
+      
       if(!exist){
-        return res.status(400).send('Admin not found')
+        return res.status(400).send('User not found')
       }
     const {roomnumber,options}=req.body;
     const room= await roommodel.findOne({roomnumber})
@@ -26,10 +28,11 @@ router.post('/enter',middleware,async (req,res)=>{
 router.get('/allrooms',async (req,res)=>{
   console.log('Incoming request:', req.method, req.url,req.body);
     try {
-      // let exist=await usersmodel.findById(req.userid);
-      // if(!exist){
-      //   return res.status(400).send('User not found')
-      // }
+      let exist=await usersmodel.findById(req.userid);
+      let existfaculty = await facultymodel.findById(req.userid)
+      if(!exist && !existfaculty){
+        return res.status(400).send('User not found')
+      }
         const deluxerooms = await roommodel.find({ "options": "Deluxe" });
         const singlerooms = await roommodel.find({ "options": "Single" });
         const doublerooms = await roommodel.find({ "options": "Double" });
@@ -50,10 +53,6 @@ router.get('/allrooms',async (req,res)=>{
 
 router.get('/allfreerooms',async (req,res)=>{
   try {
-    let exist=await adminmodel.findById(req.userid);
-      if(!exist){
-        return res.status(400).send('Admin not found')
-      }
     const Rooms = await roommodel.find({});
     console.log(Rooms)
       return res.status(200).json({

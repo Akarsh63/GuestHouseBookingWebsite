@@ -11,15 +11,11 @@
 }
 .extra {
   margin: auto;
-  background-color:  #2B3A55;
-  box-shadow: 0px 10px 16.83px 0.17px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
+  background-color:  #FFF;
+  box-shadow: rgba(50, 71, 92, 0.06) 0px 2px 9px -2px, rgba(50, 71, 92, 0.04) 0px 4px 9px 1px, rgba(50, 71, 92, 0.02) 0px 2px 6px 4px;
+    border-radius: 8px;
     padding:20px;
-    height:300px;
     width: 400px;
-}
-.extras{
-   background-color: #CE7777;
 }
 .susform{
   padding: 15px 30px;
@@ -31,14 +27,27 @@
   margin-bottom: 15px;
   }
   .forming{
-   color: #fff;
+    color: rgba(50, 71, 92, 0.87);
+    font-size:19px;
+    font-weight: 500;
+    line-height: 2rem;
+    letter-spacing: normal!important;
+    font-family: Public Sans,sans-serif,-apple-system,blinkmacsystemfont,Segoe UI,roboto,Helvetica Neue,arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol!important;
   }
 .r{
   font-size: 16px;
-  padding:7px;
+  padding:7px 12px;
   outline: none;
-  border: none;
-  border-radius: 3px;
+  /* border: none; */
+  border: 1px solid #0000003f;
+  border-radius: 5px;
+  color:rgba(50, 71, 92, 0.6)
+}
+.r:hover{
+  border-color: #000;
+}
+.r:focus{
+  border:2px solid #696cff
 }
 .radiobtns{
   margin-top: 8px;
@@ -47,85 +56,96 @@
   gap: 5px;
 }
 .single{
-  color: #4C5A65;
+  color: rgba(50, 71, 92, 0.6);
   margin-left:7px;
-  font-size:20px;
+  font-size:18px;
   font-style:oblique;
 }
 .double{
-  color: #4C5A65;
+  color: rgba(50, 71, 92, 0.6);
   margin-left:7px;
-  font-size:20px;
+  font-size:18px;
   font-style:oblique;
 }
 .deluxe{
-  color: #4C5A65;
+  color: rgba(50, 71, 92, 0.6);
   margin-left:7px;
-  font-size:20px;
+  font-size:18px;
   font-style:oblique;
 }
 .rrrbut{
   width: 100%;
-  padding-top: 10px;
+  margin-top: 20px;
   text-align: center;
 }
 .rrr{
   cursor: pointer;
-  width: 80px;
-  height: 35px;
-  color: #fff;
   font-size:18px;
-  background-color: #CE7777;
   border: none;
   outline: none;
   border-radius: 5px;
+  background-color: #696cff;
+  color: #fff;
+  font-weight: 400;
+  width: 100%;
+  padding: 5px;
+  box-shadow: 0 2px 4px 0 rgba(105,108,255,.4);
 }
 .sub{
   margin-top: 5px;
-  border: 2px solid #fff;
 }
 .newroomadmin{
   text-align: center;
   font-size: 30px;
-  color: #bcb4b4;
-  font-weight: 600;
+  color: #696cff;
+
+  font-weight: 100;
   margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 /* <------Card.css-------> */
 
 .main1{
-    background-color: #718693;
+
+    /* background-color: #718693; */
     min-height:100vh ;
     height:100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    /* align-items: center; */
+    padding: 100px 20px 20px;
+    gap:30px;
+    flex-wrap: wrap;
 }
 .table1{
-  width: 60%;
+  /* width: 50%; */
 }
 .shh1{
   width: 60%;
   margin: 20px auto;
   display:flex;
   flex-direction: row;
-  gap:40px;
-  padding:65px 35px;
-  background-color: #4C5A65;
+  gap:10px;
+  /* padding:10px 15px ; */
+  background-color: transparent;
   border-radius: 12px;
   
 }
 .ashd1{
   background-color:#fff ;
   border: transparent;
-  width:62%;
   height: 30px;
   outline: none;
   border-radius: 5px;
   padding: 5px 20px;
-  font-size: 15px;
+  font-size: 16px;
   color: #808080;
+  background-color: #ffff;
+  box-shadow: 0 2px 6px 0 rgba(67,89,113,.12);
+  /* width: 100%; */
+  padding: 20px;
+  width: 330px;
 }
 
 .butt{
@@ -133,37 +153,47 @@
   border:none;
   outline: none;
   border-radius: 5px;
-  background-color: #a8cda1;
-  color: #333;
+  background-color: #696cff;
+  color: #fff;
   font-weight: 400;
+  width: 115px;
+  padding: 5px;
+  box-shadow: 0 2px 4px 0 rgba(105,108,255,.4);
+}
+.datespickers{
+  display: flex;
+  flex-direction: row;
+  /* margin-bottom: 10px; */
+  gap: 7px;
 }
 .datepicker{
   outline: none;
   border: none;
   padding: 8px;
-  margin-bottom: 10px;
-  margin-right: 5px;
+  box-shadow: 0 2px 6px 0 rgba(67,89,113,.12);
+  border-radius: 5px;
 }
 .table2{
-  width: auto;
-  margin-right: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .bu{
-  background-color: #4C5A65;
-  padding: 8px;
+  border-radius: 5px;
+  background-color: #696cff;
+  padding: 8px 12px;
   outline: none;
   color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(105,108,255,.4);
   border: none;
   cursor: pointer;
 }
 .sf{
- background-color: #fff;
+background-color: #fff;
+box-shadow: 0 2px 6px 0 rgba(67,89,113,.12);
 border:none;
-max-width: 62%;
-border-radius: 8px;
-padding: 16px;
+border-radius: 5px;
+padding: 20px 25px;
 cursor: pointer;
 margin-left: auto;
 margin-right: auto;
@@ -180,15 +210,17 @@ margin-top:40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 0;
+    margin-top: 30px;
  }
-
  .table{
   width: 100%;
-  height: 100%;
  }
  .tab{
-  margin: 0px 0px;
+  overflow-x:scroll;
+  min-width: 0 !important;
+ }
+ .css-rqglhn-MuiTable-root,.tss-1cdcmys-MUIDataTable-responsiveBase{
+  /* overflow-x: scroll; */
  }
   .tab.MuiTableRow-root{
     height:20px;
@@ -232,31 +264,38 @@ margin-top:40px;
 .copy:active{
   background-color: #ccc;
 }
-
-@media only screen and (max-width:899.94px){
-  .tss-1t2q2nr-MUIDataTableBodyCell-stackedHeader{
-    display:none !important;
-   }
-  .main1{
-    padding:80px 0;
-   flex-direction: column;
-   gap:50px
-  }
+@media only screen and (max-width:1055px){
   .table1{
-    width: 100%;
+    width: 80%;
+    margin:0 auto;
+  }
+  .shd1{
+    width:100%;
+  }
+  .ashd1{
+    flex:1;
+  }
+  .sf{
+    margin-top: 20px;
   }
   .table2{
     width: 80%;
-    margin-right: 0;
+    gap:20px
   }
-
-  .shh1{
-    max-width: 400px;
-    
+  .react-datepicker-wrapper{
+    flex: 1;
   }
-  .tab{
-    margin: 0px 30px;
+  .datepicker{
+    width: 100%;
+  }
+}
+@media only screen and (max-width:899.94px){
+  .tss-1t2q2nr-MUIDataTableBodyCell-stackedHeader{
+    /* display:none !important; */
    }
+   .css-15wwp11-MuiTableHead-root {
+    display: table-header-group;
+}
    .mainss{
     grid-template-columns: repeat(1,1fr);
     grid-template-rows: repeat(2,1fr);
@@ -266,37 +305,27 @@ margin-top:40px;
     margin-top: 50px;
   }
   }
+  @media only screen and (max-width:616px){
+    .table1,.table2{
+      width:90%;
+    }
+  }
   @media only screen and (max-width:576px){
-    .tab{
-      margin: 20px;
-    }
-    .table2{
-      width: 90%;
-    }
-    .shh1{
-      width: 78%;
-      gap:10px;
-      padding:35px 25px;
-    }
-    .sf{
-     max-width:81%;
-     cursor: pointer;
-     margin-left:auto;
-     margin-right:auto;
-     }
+      .MUITABLE{
+        overflow-x: scroll;
+      }
+    
      .susform{
       padding: 10px 10px;
     }
     } 
     @media only screen and (max-width:450px){
          .extra{
-          width:300px;
-          height: 290px;
+          width:90%;
+         }
+         .mainss{
+          gap:0px;
+          margin-top: 60px;
          }
       } 
-      @media only screen and (max-width:350px){
-        .extra{
-         width:240px;
-         height: 290px;
-        }
-     } 
+      

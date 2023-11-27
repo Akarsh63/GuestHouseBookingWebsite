@@ -56,8 +56,35 @@ export default function Formsumission({accomodation}) {
       else if (accomodation===2){
         details.Roomstype=["Deluxe"]
       }
+      const {
+        Firstname,
+        Lastname,
+        Email,
+        Phonenumber,
+        Address,
+        Rooms,
+        Roomstype,
+        Adults,
+        Meals,
+        Specialrequest,
+        Fromdate,
+        Enddate,
+      } = details;
       try{
-        const result = await axios.post('http://localhost:8082/bookings/book', {details}, {
+        const result = await axios.post('http://localhost:8082/bookings/book', {
+          Firstname,
+          Lastname,
+          Email,
+          Phonenumber,
+          Address,
+          Rooms,
+          Roomstype,
+          Adults,
+          Meals,
+          Specialrequest,
+          Fromdate,
+          Enddate,
+        }, {
   headers: {
     'x-token': cookies.access_token
   }
